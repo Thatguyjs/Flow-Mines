@@ -1,0 +1,7 @@
+# Ignore files that we don't want to commit
+
+/src/app/examples
+
+/src/app/images/*_4k.png
+/src/app/images/background.jpg
+

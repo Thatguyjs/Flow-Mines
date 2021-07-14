@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Flow - Home</title>
+
+		<link rel="stylesheet" href="./style.css">
+		<link rel="stylesheet" href="/common/common.css">
+	</head>
+	<body>
+		<div id="icon-container"></div>
+		<script src="./icons.js"></script>
+
+		<!-- Background image -->
+		<div id="bg-wrapper">
+			<img src="./images/background_hd.png">
+			<div id="bg-overlay"></div>
+		</div>
+
+		<!-- Heading nav bar -->
+		<header>
+			<h1>Flow</h1>
+
+			<button id="nav-settings">
+				<svg><use href="#icon-settings"></svg>
+			</button>
+		</header>
+
+		<!-- Main body content -->
+		<main>
+			<div id="today-container"></div>
+			<div id="week-container"></div>
+		</main>
+
+		<!-- Scripts -->
+		<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+		<script src="https://unpkg.com/babel-standalone@7.0.0-beta.3/babel.js" crossorigin></script>
+
+		<script type="text/babel" src="./card.js"></script>
+		<script type="text/babel" src="./main.js"></script>
+	</body>
+</html>
