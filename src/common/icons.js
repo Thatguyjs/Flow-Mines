@@ -1,10 +1,11 @@
 // Load icons from the icons.svg file
 
-(async function() {
-	'use strict';
+import icons from "./icons.svg";
 
-	const response = await fetch('./icons.svg');
+(async function() {
+	const response = await fetch(icons);
 	const text = await response.text();
 
 	document.getElementById('icon-container').innerHTML = text;
 })();
+
