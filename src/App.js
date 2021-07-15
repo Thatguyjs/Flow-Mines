@@ -5,6 +5,9 @@ import background from "./images/background_hd.png";
 
 import Card from './Card.js';
 
+import ToggleButton from "./settings.js";
+import RadioPanel from './radio.js';
+import RadioButton from './radiob';
 
 class WaterData {
 	constructor(dayName, weather, temp, startTime, duration) {
@@ -59,8 +62,12 @@ function App() {
 			<div id="week-container">
 				<Card id={weekCTest.dayName} layout="narrow" data={ weekCTest}/>
 			</div>
+			<ToggleButton label="test" isOn = {false} handleChange = {() => { } }/>
+			
 		</main>
-	 </> );
+	</>);
+	// <RadioPanel panelName="test" selected="0" options={["0", "1", "2"]} />
+	// 
 }
 
 export default App;
