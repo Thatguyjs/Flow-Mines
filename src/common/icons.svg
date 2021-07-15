@@ -1,19 +1,49 @@
-<svg id="icon-clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-	<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-.22-13h-.06c-.4 0-.72.32-.72.72v4.72c0 .35.18.68.49.86l4.15 2.49c.34.2.78.1.98-.24.21-.34.1-.79-.25-.99l-3.87-2.3V7.72c0-.4-.32-.72-.72-.72z"/>
+<svg id="icon-clock" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 32 32" fill = "none">
+	<circle cx="15" cy="15" r="14" stroke="white" stroke-width="3"/>
+	<path d="M14.5 15L14.5 5" stroke="white" stroke-width="2"/>
+	<path d="M14.377 14.8624L26.1231 19.1377" stroke="white" stroke-width="2"/>
 </svg>
 
-<svg id="icon-hourglass" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-	<path d="M8 2c-1.1 0-2 .9-2 2v3.17c0 .53.21 1.04.59 1.42L10 12l-3.42 3.42c-.37.38-.58.89-.58 1.42V20c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-3.16c0-.53-.21-1.04-.58-1.41L14 12l3.41-3.4c.38-.38.59-.89.59-1.42V4c0-1.1-.9-2-2-2H8zm8 14.5V19c0 .55-.45 1-1 1H9c-.55 0-1-.45-1-1v-2.5l4-4 4 4zm-4-5l-4-4V5c0-.55.45-1 1-1h6c.55 0 1 .45 1 1v2.5l-4 4z"/>
+<svg id="icon-hourglass" xmlns="http://www.w3.org/2000/svg" viewBox="1 0 15 30" fill= "none">
+	<path d="M1 1.20551H8.60274" stroke="white" stroke-width="2"/>
+	<path d="M1 1V4.90411H2.0274C1.61644 7.0274 1.86301 11.6849 6.13699 13.3288" stroke="white" stroke-width="2"/>
+	<path d="M16 1.20551H8.39726" stroke="white" stroke-width="2"/>
+	<path d="M16 1V4.90411H14.9726C15.3836 7.0274 15.137 11.6849 10.863 13.3288" stroke="white" stroke-width="2"/>
+	<path d="M1 25.452H8.60274" stroke="white" stroke-width="2"/>
+	<path d="M1 25.6575V21.7534H2.0274C1.61644 19.6301 1.86301 14.9726 6.13699 13.3288" stroke="white" stroke-width="2"/>
+	<path d="M16 25.452H8.39726" stroke="white" stroke-width="2"/>
+	<path d="M16 25.6575V21.7534H14.9726C15.3836 19.6301 15.137 14.9726 10.863 13.3288" stroke="white" stroke-width="2"/>
 </svg>
 
 
-<svg id="icon-weather-sunny" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-	<path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
+<svg id="icon-weather-sunny" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill = "none">
+	<circle cx="80" cy="80" r="80" fill="#FFC700"/>
 </svg>
 
-<svg id="icon-weather-cloudy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-	<path d="M19.36 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.64-4.96z"/>
+<svg id="icon-weather-cloudy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill = "none">
+	<path d="M160 47.5C160 73.7335 138.734 95 112.5 95C86.2665 95 65 73.7335 65 47.5C65 21.2665 86.2665 0 112.5 0C138.734 0 160 21.2665 160 47.5Z" fill="#FFC700"/>
+	<ellipse cx="30.743" cy="109.333" rx="30.743" ry="30.6667" fill="#C4C4C4"/>
+	<ellipse cx="61.486" cy="78.6667" rx="30.743" ry="30.6667" fill="#C4C4C4"/>
+	<ellipse cx="76.5" cy="109.333" rx="30.743" ry="30.6667" fill="#C4C4C4"/>
+	<ellipse rx="30.743" ry="30.6667" transform="matrix(-1 0 0 1 122.257 109.333)" fill="#C4C4C4"/>
+	<ellipse rx="30.743" ry="30.6667" transform="matrix(-1 0 0 1 91.514 78.6667)" fill="#C4C4C4"/>
 </svg>
+
+<svg id = "icon-weather-rainy" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<ellipse cx="32.1495" cy="64.1394" rx="32.1495" ry="32.0697" fill="#C4C4C4"/>
+	<ellipse cx="64.2991" cy="32.0697" rx="32.1495" ry="32.0697" fill="#C4C4C4"/>
+	<ellipse cx="80" cy="64.1394" rx="32.1495" ry="32.0697" fill="#C4C4C4"/>
+	<ellipse rx="32.1495" ry="32.0697" transform="matrix(-1 0 0 1 127.85 64.1394)" fill="#C4C4C4"/>
+	<ellipse rx="32.1495" ry="32.0697" transform="matrix(-1 0 0 1 95.7009 32.0697)" fill="#C4C4C4"/>
+	<line x1="2.5" y1="-2.5" x2="27.5" y2="-2.5" transform="matrix(-0.523585 0.851974 -0.425746 -0.904843 62.6794 100)" stroke="#04D2FF" stroke-width="5" stroke-linecap="round"/>
+	<line x1="2.5" y1="-2.5" x2="27.5" y2="-2.5" transform="matrix(-0.523585 0.851974 -0.425746 -0.904843 45.7075 100)" stroke="#04D2FF" stroke-width="5" stroke-linecap="round"/>
+	<line x1="2.5" y1="-2.5" x2="27.5" y2="-2.5" transform="matrix(-0.523585 0.851974 -0.425746 -0.904843 79.6794 100)" stroke="#04D2FF" stroke-width="5" stroke-linecap="round"/>
+	<line x1="2.5" y1="-2.5" x2="27.5" y2="-2.5" transform="matrix(-0.523585 0.851974 -0.425746 -0.904843 96.6794 100)" stroke="#04D2FF" stroke-width="5" stroke-linecap="round"/>
+	<path d="M113.679 100L97.9719 125.559" stroke="#04D2FF" stroke-width="5" stroke-linecap="round"/>
+	<line x1="2.5" y1="-2.5" x2="27.5" y2="-2.5" transform="matrix(-0.523585 0.851974 -0.425746 -0.904843 130.679 100)" stroke="#04D2FF" stroke-width="5" stroke-linecap="round"/>
+</svg>
+
+
 
 <svg id="icon-settings" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24">
 	<g>
