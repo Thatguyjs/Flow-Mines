@@ -131,3 +131,20 @@ main {
 	font-style:normal;
 	/* background: rgba(0, 255, 0, 0.15); */
 }
+
+/* Settings Element Styling*/
+.radioContainer {
+	color:rgba(255, 255, 255, 100%);
+	font-weight: 300;
+	font-family: Source Sans Pro;
+}
+
+.radioContainer > h3 {
+	font-weight: 300;
+}
+
+.checkBox {
+	color:rgba(255, 255, 255, 100%);
+	font-weight: 300;
+	font-family: Source Sans Pro;
+}
