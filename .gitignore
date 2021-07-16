@@ -25,3 +25,7 @@ yarn-error.log*
 # Other background images
 /src/images/background.jpg
 /src/images/background_4k.png
+
+# Font folders
+/src/fonts/*
+!/src/fonts/Font urls.txt

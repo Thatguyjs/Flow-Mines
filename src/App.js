@@ -9,6 +9,7 @@ import ToggleButton from "./settings.js";
 import RadioPanel from './radio.js';
 import RadioButton from './radiob';
 
+
 class WaterData {
 	constructor(dayName, weather, temp, startTime, duration) {
 		this.dayName = dayName;
@@ -36,9 +37,20 @@ class WaterData {
 
 }
 
+
 function App() {
-	const today = new WaterData("today", "sunny", "70 F", "8AM", "20min")
-	const weekCTest = new WaterData("monday", "cloudy", "50 F", "5AM", "30min")
+	const today = new WaterData("today", "sunny", "70 °F", "8:00 AM", "20 min");
+
+	const week = [
+		new WaterData("monday", "cloudy", "50 °F", "5:00 AM", "30 min"),
+		new WaterData("tuesday", "cloudy", "50 °F", "5:00 AM", "30 min"),
+		new WaterData("wednesday", "cloudy", "50 °F", "5:00 AM", "30 min"),
+		new WaterData("thursday", "cloudy", "50 °F", "5:00 AM", "30 min"),
+		new WaterData("friday", "cloudy", "50 °F", "5:00 AM", "30 min"),
+		new WaterData("saturday", "cloudy", "50 °F", "5:00 AM", "30 min"),
+		new WaterData("sunday", "cloudy", "50 °F", "5:00 AM", "30 min")
+	];
+
 	return ( <>
 		<div id="bg-wrapper">
 			<img src={background} alt="" style={{height: "auto", objectFit: "fill"} }/>
@@ -49,25 +61,28 @@ function App() {
 			<button id="nav-settings">
 				<svg><use href="#icon-settings" /></svg>
 			</button>
-			
-			<h1>Flow</h1>
 
-			
+			<h1>Flow</h1>
 		</header>
 
 		<main>
 			<div id="today-container">
-				<Card id={today.dayName} layout="wide" data={today }/>
+				<Card id={today.dayName} layout="wide" data={today}/>
 			</div>
 			<div id="week-container">
-				<Card id={weekCTest.dayName} layout="narrow" data={ weekCTest}/>
+				<Card id={week[0].dayName} layout="narrow" data={week[0]}/>
+				<Card id={week[1].dayName} layout="narrow" data={week[1]}/>
+				<Card id={week[2].dayName} layout="narrow" data={week[2]}/>
+				<Card id={week[3].dayName} layout="narrow" data={week[3]}/>
+				<Card id={week[4].dayName} layout="narrow" data={week[4]}/>
+				<Card id={week[5].dayName} layout="narrow" data={week[5]}/>
+				<Card id={week[6].dayName} layout="narrow" data={week[6]}/>
 			</div>
 			<ToggleButton label="test" isOn = {false} handleChange = {() => { } }/>
-			
 		</main>
 	</>);
+
 	// <RadioPanel panelName="test" selected="0" options={["0", "1", "2"]} />
-	// 
 }
 
 export default App;
