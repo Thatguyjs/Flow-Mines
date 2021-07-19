@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import './common/common.css';
 import './App.css';
 
@@ -58,9 +60,9 @@ function App() {
 		</div>
 
 		<header>
-			<button id="nav-settings">
+			<Link id="nav-settings" to="/settings">
 				<svg><use href="#icon-settings" /></svg>
-			</button>
+			</Link>
 
 			<h1>Flow</h1>
 		</header>
@@ -85,4 +87,22 @@ function App() {
 	// <RadioPanel panelName="test" selected="0" options={["0", "1", "2"]} />
 }
 
-export default App;
+
+function Settings() {
+	return ( <>
+		<header>
+			<Link id="nav-app" to="/">
+				<svg><use href="#icon-back" /></svg>
+			</Link>
+
+			<h1>Flow</h1>
+		</header>
+
+		<main>
+			<h1>Test</h1>
+		</main>
+	</> );
+}
+
+
+export { App, Settings };

@@ -55,7 +55,7 @@ header {
 	z-index: 1;
 }
 
-header button {
+header a {
 	float: left;
 	margin: 6px 0 0 12px;
 
@@ -79,15 +79,17 @@ header h1 {
 	font-weight: 300;
 }
 
-header button:last-child {
+header a:last-child {
 	margin-right: 8px;
 }
 
-header button:hover {
+header a:hover {
 	background: rgba(0, 0, 0, 15%);
 }
 
-header button svg {
+header a svg {
+	margin: 6px 0 0 12px;
+
 	width: 24px;
 	height: 24px;
 
