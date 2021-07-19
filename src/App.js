@@ -5,9 +5,13 @@ import background from "./images/background_hd.png";
 
 import Card from './Card.js';
 
-import ToggleButton from "./settings.js";
-import RadioPanel from './radio.js';
-import RadioButton from './radiob';
+import ToggleButton from "./settings-components/settings.js";
+import RadioPanel from './settings-components/radio.js';
+import RadioButton from './settings-components/radiob';
+
+import Dropdown from "./settings-components/dropdown.js";
+
+import ValueField from './settings-components/valuefield';
 
 class WaterData {
 	constructor(dayName, weather, temp, startTime, duration) {
@@ -18,21 +22,44 @@ class WaterData {
 		this.duration = duration;
 	}
 
+
+	// base unit is always fahrenheit
+
 	/*
-	this.tempUnits for future stuff.
-
-	get tempStr() {
-		return this.gTempStr();
+	get tempStr(units) {
+		return this.gTempStr(units);
 	}
 
-	gTempStr() {
-		return temp + this.tempUnits;
+	gTempStr(units) {
+		if (units.equals("c")){
+			temp = (this.temp - 32)/1.8
+		} else {
+			temp = this.temp
+		}
+		return temp + units;
 	}
+	*/
 
 	get sTime() {
 		return this.gSTime();
 	}
-	*/
+
+	gWeatherColor() {
+		if (this.temp >= 70) {
+			// return value + modification
+		} else if (this.temp >= 50) {
+			
+		} else if (this.temp > 32) {
+			
+		} else {
+			
+		}
+	}
+
+	
+
+
+	
 
 }
 
@@ -62,12 +89,13 @@ function App() {
 			<div id="week-container">
 				<Card id={weekCTest.dayName} layout="narrow" data={ weekCTest}/>
 			</div>
-			<ToggleButton label="test" isOn = {false} handleChange = {() => { } }/>
+			<Dropdown selected="0" options={["0", "1", "2"]} label="test" cHandle={() => { } }/>
 			
 		</main>
 	</>);
 	// <RadioPanel panelName="test" selected="0" options={["0", "1", "2"]} />
-	// 
+	// <ToggleButton label="test" isOn = {false} handleChange = {() => { } }/>
+	// <ValueField value="test" label="name" cHandle={() => { } }/>
 }
 
 export default App;

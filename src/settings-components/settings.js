@@ -63,7 +63,7 @@ class ToggleButton extends React.Component {
 
     render() {
         return (
-            <div className="checkBox">
+            <div className="CheckBox">
                 <label className = "settingsLabel">
                     <input
                         type="checkbox"

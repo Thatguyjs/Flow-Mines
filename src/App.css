@@ -133,18 +133,30 @@ main {
 }
 
 /* Settings Element Styling*/
-.radioContainer {
+.RadioContainer {
 	color:rgba(255, 255, 255, 100%);
 	font-weight: 300;
 	font-family: Source Sans Pro;
 }
 
-.radioContainer > h3 {
+.RadioContainer > h3 {
 	font-weight: 300;
 }
 
-.checkBox {
+.CheckBox {
 	color:rgba(255, 255, 255, 100%);
+	font-weight: 300;
+	font-family: Source Sans Pro;
+}
+
+.ValueField {
+	color:rgba(0,0,0, 100%);
+	font-weight: 300;
+	font-family: Source Sans Pro;
+}
+
+.Dropdown {
+	color:rgba(0,0,0, 100%);
 	font-weight: 300;
 	font-family: Source Sans Pro;
 }

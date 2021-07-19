@@ -12,6 +12,7 @@ class RadioPanel extends React.Component {
 
     handleChange = val => {
         this.setState({ selected: val });
+        // need to push up?
     }
 
     createButton = val => {
@@ -28,7 +29,7 @@ class RadioPanel extends React.Component {
 
     render() {
         return (
-            <div className="radioContainer">
+            <div className="RadioContainer">
                 <h3>{this.props.panelName }</h3>
                 {this.createRadioButtons()}
             </div>
