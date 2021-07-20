@@ -5,7 +5,7 @@ class RadioButton extends React.Component{
         This is only a single button within a setting featuring other options.
 
         Required Props:
-        - onChange(func)
+        - cHandle(func)
         - selected (string)
         - value (string)
         - panelName (string)
@@ -20,7 +20,7 @@ class RadioButton extends React.Component{
     }
 
     handleClick(e) {
-        this.props.onChange(e.target.value);
+        this.props.cHandle(e.target.value);
     }
 
     render() {

@@ -23,3 +23,5 @@ class ResetButton extends React.Component {
         )
     }
 }
+
+export default ResetButton;
