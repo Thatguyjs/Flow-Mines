@@ -24,7 +24,7 @@
 }
 
 header{
-	font-family: Source Sans Pro;
+	font-family: "Source Sans Pro";
 }
 
 
@@ -37,14 +37,14 @@ main {
 
 #today-container {
 	display: flex;
-	flex-direction:column;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 
 	width: 100%;
-	height: clamp(400px, 40%, 300px);
-
-	/* background: rgba(255, 0, 0, 0.15); */
+	height: 40%;
+	min-height: 210px;
+	max-height: 400px;
 }
 
 #today-container .card {
@@ -56,12 +56,28 @@ main {
 }
 
 #week-container {
-	flex-grow: 1;
 	display: flex;
+	justify-content: center;
 }
 
 #week-container .card {
+	margin: 0 6px 0 6px;
 
+	width: 110px;
+	height: 300px;
+
+	background: rgba(245, 245, 255, 25%);
+	backdrop-filter: blur(10px);
+}
+
+#week-container .card-weather svg {
+	width: 52px;
+	height: 52px;
+}
+
+#week-container .card-schedule svg {
+	width: 24px;
+	height: 24px;
 }
 
 
@@ -69,74 +85,132 @@ main {
 
 .card {
 	border-radius: 10px;
-	font-family: Source Sans Pro;
-	color: rgba(255,255,255,100%);
+	font-family: "Source Sans Pro";
+	color: #fff;
 	/* box-shadow: 1px 2px 4px rgba(0, 0, 0, 40%); */
 }
 
+.card h2:first-letter {
+	text-transform: capitalize;
+}
 
+/* Content cards - Wide variant */
 
 .card-wide h2 {
 	margin: 0;
 	padding: 20px 0 0 20px;
 
-
 	font-weight: 300;
 	font-size: 24px;
-	
 }
-
 
 .card-wide .card-info {
 	display: flex;
-	flex-direction:row;
-	align-items:center;
+	flex-direction: row;
+	align-items: center;
+
 	padding: 0px 20px 0px 20px;
-	height:80%;
+	height: 80%;
 
-	font-weight:300;
+	font-weight: 300;
 	font-size: 48px;
-	font-style:italic;
-
-	/* background: rgba(255, 0, 0, 0.15); */
+	font-style: italic;
 }
-
-
 
 .card-wide .card-weather {
-	flex-grow:1;
-	display:flex;
-	flex-direction:row;
+	flex-grow: 1;
+
+	display: flex;
+	flex-direction: row;
 	align-items: center;
-	/* background: rgba(255, 0, 0, 0.15); */
 }
-
-
 
 .card-wide .card-schedule {
-	flex-grow:1;
-	display:grid;
-	text-align:left;
-	font-size: 24px;
+	flex-grow: 1;
+
+	display: grid;
 	grid-template-columns: auto auto;
-	justify-content:center;
-	
-	/* background: rgba(0, 255, 0, 0.15); */
+	justify-content: center;
+
+	text-align: left;
+	font-size: 24px;
 }
 
-.card-wide .card-schedule > div{
+.card-wide .card-schedule > div {
+	padding-left: 5px;
 
-	justify-content:center;
-	padding-left:5px;
-	font-style:normal;
-	/* background: rgba(0, 255, 0, 0.15); */
+	font-style: normal;
 }
 
-/* Settings Element Styling*/
-.RadioContainer {
-	color:rgba(255, 255, 255, 100%);
+/* Content cards - Narrow variant */
+
+.card-narrow {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.card-narrow h2 {
+	margin: 0;
+	padding: 10px 0 10px 0;
+
 	font-weight: 300;
-	font-family: Source Sans Pro;
+	font-size: 1.4em;
+}
+
+.card-narrow .card-info {
+	flex: 1;
+
+	display: flex;
+	flex-direction: column;
+
+	width: 100%;
+}
+
+.card-narrow .card-weather {
+	flex-basis: 50%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.card-narrow .card-weather span {
+	color: #fff;
+	font-size: 1.4em;
+}
+
+.card-narrow .card-schedule {
+	flex-grow: 1;
+
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-content: center;
+
+	margin-bottom: 8px;
+
+	text-align: left;
+	font-size: 18px;
+}
+
+.card-narrow .card-schedule > div {
+	padding-left: 5px;
+
+	font-style: normal;
+}
+
+.card-narrow .card-schedule svg {
+	margin-top: 3px;
+}
+
+
+/* Settings Element Styling */
+
+.RadioContainer {
+	color: #fff;
+	font-weight: 300;
+	font-family: "Source Sans Pro";
 }
 
 .RadioContainer > h3 {
@@ -144,19 +218,19 @@ main {
 }
 
 .CheckBox {
-	color:rgba(255, 255, 255, 100%);
+	color: #fff;
 	font-weight: 300;
-	font-family: Source Sans Pro;
+	font-family: "Source Sans Pro";
 }
 
 .ValueField {
-	color:rgba(0,0,0, 100%);
+	color: rgba(0, 0, 0, 100%);
 	font-weight: 300;
-	font-family: Source Sans Pro;
+	font-family: "Source Sans Pro";
 }
 
 .Dropdown {
-	color:rgba(0,0,0, 100%);
+	color: rgba(0, 0, 0, 100%);
 	font-weight: 300;
-	font-family: Source Sans Pro;
+	font-family: "Source Sans Pro";
 }

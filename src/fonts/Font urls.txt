@@ -1,0 +1,3 @@
+I don't want to commit font packages to github, so here are the links to them instead:
+
+Source_Sans_Pro: https://fonts.google.com/specimen/Source+Sans+Pro

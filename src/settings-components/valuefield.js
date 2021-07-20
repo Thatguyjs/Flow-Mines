@@ -38,4 +38,4 @@ class ValueField extends React.Component {
     }
 }
 
-export default ValueField
+export default ValueField;

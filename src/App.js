@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import './common/common.css';
 import './App.css';
 
@@ -56,16 +58,22 @@ class WaterData {
 		}
 	}
 
-	
-
-
-	
-
 }
 
+
 function App() {
-	const today = new WaterData("today", "sunny", "70 F", "8AM", "20min")
-	const weekCTest = new WaterData("monday", "cloudy", "50 F", "5AM", "30min")
+	const today = new WaterData("today", "sunny", "70 °F", "8:00 AM", "20 min");
+
+	const week = [
+		new WaterData("monday", "cloudy", "50 °F", "5:00 AM", "30 min"),
+		new WaterData("tuesday", "cloudy", "50 °F", "5:00 AM", "30 min"),
+		new WaterData("wednesday", "cloudy", "50 °F", "5:00 AM", "30 min"),
+		new WaterData("thursday", "cloudy", "50 °F", "5:00 AM", "30 min"),
+		new WaterData("friday", "cloudy", "50 °F", "5:00 AM", "30 min"),
+		new WaterData("saturday", "cloudy", "50 °F", "5:00 AM", "30 min"),
+		new WaterData("sunday", "cloudy", "50 °F", "5:00 AM", "30 min")
+	];
+
 	return ( <>
 		<div id="bg-wrapper">
 			<img src={background} alt="" style={{height: "auto", objectFit: "fill"} }/>
@@ -73,29 +81,51 @@ function App() {
 		</div>
 
 		<header>
-			<button id="nav-settings">
+			<Link id="nav-settings" to="/settings">
 				<svg><use href="#icon-settings" /></svg>
-			</button>
-			
-			<h1>Flow</h1>
+			</Link>
 
-			
+			<h1>Flow</h1>
 		</header>
 
 		<main>
 			<div id="today-container">
-				<Card id={today.dayName} layout="wide" data={today }/>
+				<Card id={today.dayName} layout="wide" data={today}/>
 			</div>
 			<div id="week-container">
-				<Card id={weekCTest.dayName} layout="narrow" data={ weekCTest}/>
+				<Card id={week[0].dayName} layout="narrow" data={week[0]}/>
+				<Card id={week[1].dayName} layout="narrow" data={week[1]}/>
+				<Card id={week[2].dayName} layout="narrow" data={week[2]}/>
+				<Card id={week[3].dayName} layout="narrow" data={week[3]}/>
+				<Card id={week[4].dayName} layout="narrow" data={week[4]}/>
+				<Card id={week[5].dayName} layout="narrow" data={week[5]}/>
+				<Card id={week[6].dayName} layout="narrow" data={week[6]}/>
 			</div>
 			<Dropdown selected="0" options={["0", "1", "2"]} label="test" cHandle={() => { } }/>
-			
 		</main>
 	</>);
+
 	// <RadioPanel panelName="test" selected="0" options={["0", "1", "2"]} />
 	// <ToggleButton label="test" isOn = {false} handleChange = {() => { } }/>
 	// <ValueField value="test" label="name" cHandle={() => { } }/>
 }
 
-export default App;
+
+function Settings() {
+	return ( <>
+		<header>
+			<Link id="nav-app" to="/">
+				<svg><use href="#icon-back" /></svg>
+			</Link>
+
+			<h1>Flow</h1>
+		</header>
+
+		<main>
+			<h1>Test</h1>
+		</main>
+	</> );
+}
+
+
+export { App, Settings };

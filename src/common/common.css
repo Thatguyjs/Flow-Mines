@@ -1,11 +1,21 @@
+/* Fonts */
+
+@font-face {
+	font-family: "Source Sans Pro";
+	font-weight: normal;
+	font-style: normal;
+
+	src: url('../fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf');
+}
+
+/* General page setup */
+
 body {
 	margin: 0;
 	padding: 0;
 
 	width: 100vw;
-	height: 100vh;
-
-	overflow-x: hidden;
+	height: calc(100vh - 50px);
 }
 
 
@@ -25,7 +35,7 @@ button:hover {
 	margin: 50px 0 0 0;
 
 	width: 100%;
-	height: calc(100vh - 50px);
+	height: 100%;
 }
 
 
@@ -45,21 +55,12 @@ header {
 	z-index: 1;
 }
 
-header h1 {
-	display: inline;
-	margin: 0 0 0 22px;
-
-	color: #222;
-	font-family: "Source Sans Pro";
-	font-weight:300;
-}
-
-header button {
+header a {
 	float: left;
-	margin-top: 5px;
+	margin: 6px 0 0 12px;
 
 	width: 48px;
-	height: 40px;
+	height: 38px;
 
 	background: none;
 	border: none;
@@ -69,15 +70,26 @@ header button {
 	transition: background 120ms;
 }
 
-header button:last-child {
+header h1 {
+	display: inline-block;
+	margin: 3px 0 0 12px;
+
+	color: #222;
+	font-family: "Source Sans Pro";
+	font-weight: 300;
+}
+
+header a:last-child {
 	margin-right: 8px;
 }
 
-header button:hover {
+header a:hover {
 	background: rgba(0, 0, 0, 15%);
 }
 
-header button svg {
+header a svg {
+	margin: 6px 0 0 12px;
+
 	width: 24px;
 	height: 24px;
 
