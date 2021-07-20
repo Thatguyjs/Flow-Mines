@@ -28,7 +28,7 @@ class RadioPanel extends React.Component {
 
     render() {
         return (
-            <div className="radioContainer">
+            <div className="RadioContainer">
                 <h3>{this.props.panelName }</h3>
                 {this.createRadioButtons()}
             </div>
@@ -36,4 +36,4 @@ class RadioPanel extends React.Component {
     }
 }
 
-export default RadioPanel
+export default RadioPanel;

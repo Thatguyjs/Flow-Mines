@@ -85,7 +85,7 @@ main {
 
 .card {
 	border-radius: 10px;
-	font-family: Source Sans Pro;
+	font-family: "Source Sans Pro";
 	color: #fff;
 	/* box-shadow: 1px 2px 4px rgba(0, 0, 0, 40%); */
 }
@@ -207,19 +207,30 @@ main {
 
 /* Settings Element Styling */
 
-.radioContainer {
+.RadioContainer {
 	color: #fff;
 	font-weight: 300;
-	font-family: Source Sans Pro;
+	font-family: "Source Sans Pro";
 }
 
-.radioContainer > h3 {
+.RadioContainer > h3 {
 	font-weight: 300;
 }
 
-.checkBox {
+.CheckBox {
 	color: #fff;
 	font-weight: 300;
-	font-family: Source Sans Pro;
+	font-family: "Source Sans Pro";
 }
 
+.ValueField {
+	color: rgba(0, 0, 0, 100%);
+	font-weight: 300;
+	font-family: "Source Sans Pro";
+}
+
+.Dropdown {
+	color: rgba(0, 0, 0, 100%);
+	font-weight: 300;
+	font-family: "Source Sans Pro";
+}
