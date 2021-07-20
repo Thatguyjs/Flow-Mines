@@ -15,7 +15,6 @@ import Dropdown from "./settings-components/dropdown.js";
 
 import ValueField from './settings-components/valuefield';
 
-
 class WaterData {
 	constructor(dayName, weather, temp, startTime, duration) {
 		this.dayName = dayName;
@@ -103,7 +102,6 @@ function App() {
 				<Card id={week[6].dayName} layout="narrow" data={week[6]}/>
 			</div>
 			<Dropdown selected="0" options={["0", "1", "2"]} label="test" cHandle={() => { } }/>
-
 		</main>
 	</>);
 
