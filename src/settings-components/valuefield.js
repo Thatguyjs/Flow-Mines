@@ -30,7 +30,8 @@ class ValueField extends React.Component {
         return (
             <div className = "ValueField">
                 <label className="settingsLabel">
-                    { this.props.label}
+                    {this.props.label}
+                    <br/>
                     <input onChange={this.handleChange} placeholder={this.props.value} />
                 </label>
             </div>

@@ -27,7 +27,9 @@ class ToggleButton extends React.Component {
     render() {
         return (
             <div className="CheckBox">
-                <label className = "settingsLabel">
+                <label className="settingsLabel">
+                    {this.props.label}
+                    <br/>
                     <input
                         type="checkbox"
                         value= {this.props.isOn} // will this break things?
@@ -35,7 +37,6 @@ class ToggleButton extends React.Component {
                         onChange={this.handleClick}
                         // className?
                     />
-                    { this.props.label}
                 </label>
 
             </div>

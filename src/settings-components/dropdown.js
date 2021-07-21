@@ -15,7 +15,7 @@ class Dropdown extends React.Component {
     }
 
     renderOption = val => {
-        return (<option value={val} selected={this.state.selected == val} > {val}</option>)
+        return (<option value={val} selected={this.state.selected.equals(val) } > {val}</option>)
     }
     
     renderOptions = () => {
@@ -39,6 +39,7 @@ class Dropdown extends React.Component {
             <div className = "Dropdown">
                 <label className="settingsLabel">
                     {this.props.label}
+                    <br/>
                     <select name={this.props.name} onChange={ this.handleChange}>
                         {this.renderOptions()}
                     </select>

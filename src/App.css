@@ -28,6 +28,21 @@ header{
 }
 
 
+/* Scrollbar*/
+::-webkit-scrollbar{
+	height:6px;
+}
+
+::-webkit-scrollbar-track{
+	width:auto;
+	background:rgb(0,0,0,0%);	
+}
+
+::-webkit-scrollbar-thumb{
+	background:rgb(200,200,200,100%);
+	border-radius: 10px;
+}
+
 /* Body layout */
 
 main {
@@ -56,20 +71,24 @@ main {
 }
 
 #week-container {
+	width: clamp(300px, 45%, 45%);
+	height:clamp(310px, 63vh, 63vh);
 	display: flex;
-	justify-content: center;
+	justify-content: left; /* needs work: too wide on desktop. if using center, then not all content appears on mobile*/
+	overflow-x:scroll;
 }
 
 #week-container .card {
 	margin: 0 6px 0 6px;
 
-	width: 110px;
-	height: 300px;
+	width: clamp(100px, 14%, 14%);
+	height: clamp(300px, 50vh, 50vh); 
 
 	background: rgba(245, 245, 255, 25%);
 	backdrop-filter: blur(10px);
 }
 
+/*
 #week-container .card-weather svg {
 	width: 52px;
 	height: 52px;
@@ -78,6 +97,13 @@ main {
 #week-container .card-schedule svg {
 	width: 24px;
 	height: 24px;
+}
+*/
+
+#content-container {
+	display:flex;
+	flex-direction:column;
+	align-items:center;
 }
 
 
@@ -93,6 +119,17 @@ main {
 .card h2:first-letter {
 	text-transform: capitalize;
 }
+
+.card .smallIcon{
+	width:clamp(20px, 1.3vw, 1.3vw);
+	height:clamp(20px, 1.3vw, 1.3vw);
+}
+
+.card .largeIcon{
+	width: clamp(50px,4vw, 4vw);
+	height:clamp(50px,4vw, 4vw);
+}
+
 
 /* Content cards - Wide variant */
 
@@ -148,10 +185,11 @@ main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	font-weight:300;
 }
 
 .card-narrow h2 {
-	margin: 0;
+	margin-top: 10px;
 	padding: 10px 0 10px 0;
 
 	font-weight: 300;
@@ -201,11 +239,17 @@ main {
 }
 
 .card-narrow .card-schedule svg {
-	margin-top: 3px;
+	margin-top: 0px;
 }
 
 
 /* Settings Element Styling */
+
+.Settings{
+	color: rgb(0,0,0);
+	font-family: "Source Sans Pro";
+	box-shadow: none;
+}
 
 .RadioContainer {
 	color: #fff;
@@ -221,16 +265,17 @@ main {
 	color: #fff;
 	font-weight: 300;
 	font-family: "Source Sans Pro";
+	
 }
 
 .ValueField {
 	color: rgba(0, 0, 0, 100%);
-	font-weight: 300;
 	font-family: "Source Sans Pro";
+	border-radius:5px;
 }
 
 .Dropdown {
 	color: rgba(0, 0, 0, 100%);
-	font-weight: 300;
 	font-family: "Source Sans Pro";
+	border-radius: 5px;
 }
