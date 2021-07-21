@@ -12,6 +12,8 @@ class RadioPanel extends React.Component {
 
     handleChange = val => {
         this.setState({ selected: val });
+
+        this.props.cHandle(val);
         // need to push up?
     }
 
