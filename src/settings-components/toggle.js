@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToolTip, ToolTipBtn } from './tooltip';
 class ToggleButton extends React.Component {
 
     /* 
@@ -35,7 +36,7 @@ class ToggleButton extends React.Component {
                         onChange={this.handleClick}
                         // className?
                     />
-                    {this.props.label}
+                    {this.props.label} <ToolTipBtn id={"tooltip-toggle-" + this.props.name} text={this.props.desc }/>
                 </label>
 
             </div>

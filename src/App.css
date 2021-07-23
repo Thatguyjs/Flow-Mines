@@ -70,22 +70,45 @@ main {
 	backdrop-filter: blur(8px);
 }
 
-#week-container {
+.week-container{
+	display:flex;
+}
+
+.week-container .card{
+	background: rgba(245, 245, 255, 25%);
+	backdrop-filter: blur(10px);
+}
+
+.week-container-narrow {
 	width: clamp(300px, 45%, 45%);
 	height:clamp(310px, 63vh, 63vh);
-	display: flex;
 	justify-content: left; /* needs work: too wide on desktop. if using center, then not all content appears on mobile*/
 	overflow-x:scroll;
 }
 
-#week-container .card {
-	margin: 0 6px 0 6px;
 
+
+.week-container-wide{
+	flex-direction:column;
+	width:clamp(300px, 45%, 45%);
+	height:fit-content;
+	align-content: center;
+}
+
+.week-container-wide .card{
+	width: 100%;
+	height: 180px;
+	margin-top:10px;
+
+	background: rgba(255, 255, 255, 40%);
+	backdrop-filter: blur(8px);
+}
+
+.week-container-narrow .card {
+	margin: 0 6px 0 6px;
 	width: clamp(100px, 14%, 14%);
 	height: clamp(300px, 50vh, 50vh); 
 
-	background: rgba(245, 245, 255, 25%);
-	backdrop-filter: blur(10px);
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
@@ -97,14 +120,15 @@ main {
 		backdrop-filter: blur(8px);
 	}
 
-	#week-container {
+	.week-container{
 		width: 80%;
-		height:clamp(310px, 63vh, 63vh);
 		display: flex;
+	}
+	.week-container-narrow {
+		height:clamp(310px, 63vh, 63vh);
 		justify-content: left; /* needs work: too wide on desktop. if using center, then not all content appears on mobile*/
 		overflow-x:scroll;
 	}
-	
 }
 
 /*

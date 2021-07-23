@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToolTip, ToolTipBtn } from './tooltip';
 
 class ValueField extends React.Component {
     /*
@@ -30,7 +31,7 @@ class ValueField extends React.Component {
         return (
             <div className = "ValueField">
                 <label className="settingsLabel">
-                    {this.props.label}
+                    {this.props.label} <ToolTipBtn id={"tooltip-value-" + this.props.name} text={this.props.desc }/>
                     <br/>
                     <input type= "number" onChange={this.handleChange} placeholder={this.props.value} />
                 </label>

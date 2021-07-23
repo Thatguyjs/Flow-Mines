@@ -1,3 +1,13 @@
+#main-settings{
+	height:100vh ; /* the last dropdown overflows screen on mobile*/
+}
+
+@media only screen and (min-device-width : 350px) and (max-device-width : 812px) {
+	#main-settings{
+		height:auto ; /* the last dropdown overflows screen on mobile*/
+	}
+}
+
 #settings-container {
 	padding: 0 20%;
 
@@ -55,8 +65,16 @@
 
 /* Component styling */
 
-value {
+input {
 	font-weight:300;
+	font-size:1em;
+	font-family: "Source Sans Pro";
+}
+
+select{
+	font-weight:300;
+	font-family: "Source Sans Pro";
+	font-size: 1em;
 }
 .Settings {
 	color: #111;
@@ -70,6 +88,7 @@ value {
 .RadioContainer > h3 {
 	margin: 0;
 	font-weight: 300;
+	display:inline-block;
 }
 
 
@@ -84,6 +103,7 @@ value {
 	color: #111;
 	font-family: "Source Sans Pro";
 	border-radius:5px;
+	display:inline-block;
 }
 
 
@@ -93,12 +113,37 @@ value {
 	border-radius: 5px;
 }
 
-.ResetButton > input{
-	font-size: 0.75em;
+.ResetButton > label > input{
+	font-size: 1em;
 	border-radius:5px;
 	border-style: solid;
 	border-color:#111;
 	border-width: 1px;
 	padding-left:10px;
 	padding-right:10px;
+}
+
+.tooltip-content{
+	position:absolute;
+	border-style:solid;
+	border-width:1px;
+	padding:10px;
+	background:#eee;
+	transition: opacity 1s; /* animation needs work*/
+}
+
+.tooltip-spawner{
+	display:inline-block;
+}
+.tooltip-spawner > button{
+	fill:none;
+	border:none;
+	width:15px;
+	height:15px;
+	padding-left:0;
+}
+
+.buttonSVG{
+	width:15px;
+	height:15px;
 }
