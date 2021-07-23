@@ -54,6 +54,7 @@ function App() {
 		new WaterData("sunday", "cloudy", 80, "5:00 AM", "30 min")
 	];
 
+	const week_layout = "narrow"; // this will be set through settings
 	return ( <>
 		<div id="bg-wrapper">
 			<img src={background} alt="" style={{height: "max(100vh, 100vw)", objectFit: "fill"} }/>
@@ -73,14 +74,14 @@ function App() {
 				<div id="today-container">
 					<Card id={today.dayName} layout="wide" data={today}/>
 				</div>
-				<div id="week-container">
-					<Card id={week[0].dayName} layout="narrow" data={week[0]}/>
-					<Card id={week[1].dayName} layout="narrow" data={week[1]}/>
-					<Card id={week[2].dayName} layout="narrow" data={week[2]}/>
-					<Card id={week[3].dayName} layout="narrow" data={week[3]}/>
-					<Card id={week[4].dayName} layout="narrow" data={week[4]}/>
-					<Card id={week[5].dayName} layout="narrow" data={week[5]}/>
-					<Card id={week[6].dayName} layout="narrow" data={week[6]}/>
+				<div className={"week-container " + "week-container-" + week_layout}>
+					<Card id={week[0].dayName} layout={week_layout } data={week[0]}/>
+					<Card id={week[1].dayName} layout={week_layout } data={week[1]}/>
+					<Card id={week[2].dayName} layout={week_layout } data={week[2]}/>
+					<Card id={week[3].dayName} layout={week_layout } data={week[3]}/>
+					<Card id={week[4].dayName} layout={week_layout } data={week[4]}/>
+					<Card id={week[5].dayName} layout={week_layout } data={week[5]}/>
+					<Card id={week[6].dayName} layout={week_layout } data={week[6]}/>
 				</div>
 			</div>
 		</main>
