@@ -19,10 +19,11 @@ class RadioPanel extends React.Component {
 
     createButton = val => {
         return <RadioButton
-            cHandle= {this.handleChange}
+            cHandle={this.handleChange}
             selected={this.state.selected} // does this break anything? should it be props?
             value={val}
-            panelName = {this.props.panelName}
+            panelName={this.props.panelName}
+            key={val}
         />
     }
     createRadioButtons = () => {

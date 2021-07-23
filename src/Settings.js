@@ -21,6 +21,7 @@ function Settings() {
 
 		<main>
 			<div id="settings-container">
+				<h3 id = "settings-label">SETTINGS</h3>
 				<div id="settings-top">
 					<ValueField value="Value" label="Square Footage" cHandle={() => {}}/>
 					<ValueField value="Value" label="Flow Rate" cHandle={() => {}}/>
