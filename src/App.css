@@ -88,6 +88,25 @@ main {
 	backdrop-filter: blur(10px);
 }
 
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+	#today-container .card {
+		width: 80%;
+		height: min(80%, 180px);
+	
+		background: rgba(255, 255, 255, 40%);
+		backdrop-filter: blur(8px);
+	}
+
+	#week-container {
+		width: 80%;
+		height:clamp(310px, 63vh, 63vh);
+		display: flex;
+		justify-content: left; /* needs work: too wide on desktop. if using center, then not all content appears on mobile*/
+		overflow-x:scroll;
+	}
+	
+}
+
 /*
 #week-container .card-weather svg {
 	width: 52px;

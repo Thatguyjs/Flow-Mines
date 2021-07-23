@@ -32,7 +32,7 @@ class ValueField extends React.Component {
                 <label className="settingsLabel">
                     {this.props.label}
                     <br/>
-                    <input onChange={this.handleChange} placeholder={this.props.value} />
+                    <input type= "number" onChange={this.handleChange} placeholder={this.props.value} />
                 </label>
             </div>
         )
