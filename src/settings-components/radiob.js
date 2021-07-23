@@ -26,10 +26,8 @@ class RadioButton extends React.Component{
     render() {
         const isSelected = (this.props.selected === this.props.value);
         return (
-            <div className="radioElement">
+            <div className="RadioElement">
                 <label className="settingsLabel">
-                    {this.props.value}
-                    <br/>
                     <input
                         type="radio"
                         name={this.props.panelName}
@@ -38,6 +36,7 @@ class RadioButton extends React.Component{
                         onChange={this.handleClick}
                         // className?
                     />
+                    <span>{this.props.value}</span>
                 </label>
             </div>
         )

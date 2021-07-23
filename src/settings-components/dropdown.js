@@ -11,11 +11,10 @@ class Dropdown extends React.Component {
     constructor(props) {
         super(props);
         this.state = { isDisplayed: false, selected: this.props.selected };
-
     }
 
     renderOption = val => {
-        return (<option value={val} selected={this.state.selected.equals(val) } > {val}</option>)
+        return (<option value={val} selected={this.state.selected === val} >{val}</option>);
     }
     
     renderOptions = () => {

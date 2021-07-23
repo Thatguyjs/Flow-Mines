@@ -28,15 +28,14 @@ class ToggleButton extends React.Component {
         return (
             <div className="CheckBox">
                 <label className="settingsLabel">
-                    {this.props.label}
-                    <br/>
                     <input
                         type="checkbox"
-                        value= {this.props.isOn} // will this break things?
-                        checked = {this.state.isOn}
+                        value={this.props.isOn} // will this break things?
+                        checked={this.state.isOn}
                         onChange={this.handleClick}
                         // className?
                     />
+                    {this.props.label}
                 </label>
 
             </div>

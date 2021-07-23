@@ -9,11 +9,10 @@ import Card from './Card.js';
 
 import ToggleButton from "./settings-components/settings.js";
 import RadioPanel from './settings-components/radio.js';
-import RadioButton from './settings-components/radiob';
-
+import RadioButton from './settings-components/radiob.js';
 import Dropdown from "./settings-components/dropdown.js";
+import ValueField from './settings-components/valuefield.js';
 
-import ValueField from './settings-components/valuefield';
 
 class WaterData {
 	constructor(dayName, weather, temp, startTime, duration) {
@@ -84,8 +83,6 @@ function App() {
 					<Card id={week[6].dayName} layout="narrow" data={week[6]}/>
 				</div>
 			</div>
-			
-			
 		</main>
 	</>);
 	// <Dropdown selected="0" options={["0", "1", "2"]} label="test" cHandle={() => { } }/>
@@ -95,21 +92,4 @@ function App() {
 }
 
 
-function Settings() {
-	return ( <>
-		<header>
-			<Link id="nav-app" to="/">
-				<svg><use href="#icon-back" /></svg>
-			</Link>
-
-			<h1>Flow</h1>
-		</header>
-
-		<main>
-			<h1>Test</h1>
-		</main>
-	</> );
-}
-
-
-export { App, Settings };
+export default App;

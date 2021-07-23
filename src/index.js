@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { App, Settings } from './App';
 import reportWebVitals from './reportWebVitals';
+
+import App from './App';
+import Settings from './Settings';
 
 import './common/icons.js';
 
