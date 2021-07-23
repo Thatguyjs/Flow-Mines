@@ -8,6 +8,7 @@ import ResetButton from './settings-components/reset.js';
 import ToggleButton from './settings-components/toggle.js';
 import ValueField from './settings-components/valuefield.js';
 
+import { ToolTip, ToolTipBtn } from "./settings-components/tooltip";
 
 function Settings() {
 	return ( <>
@@ -19,7 +20,7 @@ function Settings() {
 			<h1>Flow</h1>
 		</header>
 
-		<main>
+		<main id = "main-settings">
 			<div id="settings-container">
 				<h3 id = "settings-label">SETTINGS</h3>
 				<div id="settings-top">
@@ -43,7 +44,7 @@ function Settings() {
 				</div>
 				<div id="settings-bottom">
 					<Dropdown selected="Normal" options={['Small', 'Normal', 'Large']} label="Font Size" cHandle={() => {}} />
-					<ResetButton cHandle={() => {}} />
+					<ResetButton cHandle={() => { }} />
 				</div>
 			</div>
 		</main>

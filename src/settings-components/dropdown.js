@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToolTip, ToolTipBtn } from './tooltip';
 
 class Dropdown extends React.Component {
     /* 
@@ -25,10 +26,7 @@ class Dropdown extends React.Component {
         this.setState({ isDisplayed: this.state.isDisplayed, selected: event.target.value })
 
         this.props.cHandle(event.target.value)
-        // need to push up?
     }
-
-    // HandleClick necessary?
 
 
 
@@ -37,7 +35,7 @@ class Dropdown extends React.Component {
         return (
             <div className = "Dropdown">
                 <label className="settingsLabel">
-                    {this.props.label}
+                    {this.props.label} <ToolTipBtn id={"tooltip-dropdown-" + this.props.name} text={this.props.desc }/>
                     <br/>
                     <select name={this.props.name} onChange={this.handleChange} value={this.state.selected}>
                         {this.renderOptions()}

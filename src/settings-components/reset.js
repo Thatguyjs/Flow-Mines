@@ -18,7 +18,10 @@ class ResetButton extends React.Component {
     render() {
         return (
             <div className="ResetButton">
-                <input type="button" value="RESET" onChange={this.handleChange }/>
+                <label className="settings-label">Settings Reset
+                    <br/>
+                    <input type="button" value="RESET" onChange={this.handleChange }/>
+                </label>
             </div>
         )
     }

@@ -46,7 +46,7 @@ function App() {
 
 	const week = [
 		new WaterData("monday", "sunny", 60, "5:00 AM", "30 min"),
-		new WaterData("tuesday", "cloudy", 53, "5:00 AM", "30 min"),
+		new WaterData("tuesday", "partly-cloudy", 53, "5:00 AM", "30 min"),
 		new WaterData("wednesday", "cloudy", 62, "5:00 AM", "30 min"),
 		new WaterData("thursday", "rainy", 41, "5:00 AM", "30 min"),
 		new WaterData("friday", "cloudy", 67, "5:00 AM", "30 min"),
