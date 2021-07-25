@@ -1,36 +1,97 @@
 import React from 'react';
 
-class Settings {
-    constructor(squareFootage, sprinklerFlow, mRainChance = 0.2, mRainAmt = 1, tempThresh, daySkip, displayFmt = "narrow", nAdvance, units = "imperial", textSize = "normal", rPeriod, notifDevices) {
-        this.squareF = squareFootage;
-        this.sprinklerFlow = sprinklerFlow;
-        
-        this.minRainChance = mRainChance;
-        this.minRainAmt = mRainAmt;
+class SettingStorage {
+	constructor(options={}) {
+		this.zipCode = options.zipCode;
 
-        this.tempThresh = tempThresh;
+		this.squareFootage = options.squareFootage;
+		this.sprinklerFlow = options.sprinklerFlow;
 
-        this.daySkip = daySkip;
+		this.minRainChance = options.minRainChance || 0.2;
+		this.minRainAmt = options.minRainAmt || 1;
 
-        // 7 days displayed, no need for setting
+		this.tempThresh = options.tempThresh;
 
-        this.displayFmt = displayFmt;
-        this.notifAdvance = nAdvance;
-        this.notifDevices = notifDevices;
+		this.daySkip = options.daySkip;
+		this.daySkipAuto = options.daySkipAuto || true;
 
-        this.units = units;
+		// 7 days displayed, no need for setting
 
-        this.textSize = textSize;
-        this.refreshPeriod = rPeriod;
-    }
+		this.displayFmt = options.displayFmt || "Narrow";
+		this.notifAdvance = options.notifAdvance;
+		this.notifDevices = options.notifDevices;
+
+		this.units = options.units || "Imperial";
+		this.timeFormat = options.timeFormat || "12 Hour";
+		this.textSize = options.textSize || "Normal";
+
+		this.refreshPeriod = options.refreshPeriod;
+	}
+
+
+	// Read all settings from localStorage
+	#read() {
+		let settings_str = localStorage.getItem('settings');
+
+		if(!settings_str) return {};
+		return JSON.parse(settings_str);
+	}
+
+
+	// Write a group of settings to localStorage
+	#write(obj) {
+		localStorage.setItem("settings", JSON.stringify(obj));
+	}
+
+
+	// Set / update a setting
+	set(name, value) {
+		if(!name in this) return; // Invalid setting name
+		this[name] = value;
+	}
+
+	// Get a setting
+	get(name) {
+		return this[name];
+	}
+
+
+	// Load all settings from localStorage
+	load() {
+		let saved = this.#read();
+
+		for(let s in saved) {
+			this[s] = saved[s];
+		}
+	}
+
+
+	// Save all settings to localStorage
+	saveAll() {
+		let obj = {
+			"zipCode": null,
+			"squareFootage": null,
+			"sprinklerFlow": null,
+			"tempThresh": null,
+			"minRainAmt": null,
+			"minRainChance": null,
+			"daySkip": null,
+			"daySkipAuto": null,
+			"units": null,
+			"displayFmt": null,
+			"refreshPeriod": null,
+			"timeFormat": null,
+			"notifAdvance": null,
+			"textSize": null
+		};
+
+		for(let name in obj) {
+			obj[name] = this[name];
+		}
+
+		this.#write(obj);
+	}
 }
 
-class SettingsPanel extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {settings: props.settings}
-    }
 
-
-}
-
+export default SettingStorage;

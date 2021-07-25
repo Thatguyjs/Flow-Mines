@@ -1,10 +1,10 @@
-#main-settings{
-	height:100vh ; /* the last dropdown overflows screen on mobile*/
+#main-settings {
+	height: calc(100vh - 50px); /* the last dropdown overflows screen on mobile*/
 }
 
 @media only screen and (min-device-width : 350px) and (max-device-width : 812px) {
-	#main-settings{
-		height:auto ; /* the last dropdown overflows screen on mobile*/
+	#main-settings {
+		height: auto; /* the last dropdown overflows screen on mobile*/
 	}
 }
 
@@ -21,10 +21,10 @@
 	font-weight: 300;
 }
 
-#settings-label{
-	font-weight:300;
-	font-size:1.5em;
-	font-style:italic;
+#settings-label {
+	font-weight: 300;
+	font-size: 1.5em;
+	font-style: italic;
 }
 
 #settings-top {

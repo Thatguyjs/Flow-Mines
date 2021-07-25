@@ -12,20 +12,27 @@ class Dropdown extends React.Component {
     constructor(props) {
         super(props);
         this.state = { isDisplayed: false, selected: this.props.selected };
+
+		this.props.cInit(this);
     }
+
+	select(item) {
+		this.state.selected = item;
+		this.renderOptions();
+	}
 
     renderOption = val => {
         return (<option value={val} key={val }>{val}</option>);
     }
     
     renderOptions = () => {
-        return this.props.options.map(this.renderOption)
+        return this.props.options.map(this.renderOption);
     }
 
     handleChange = event => {
-        this.setState({ isDisplayed: this.state.isDisplayed, selected: event.target.value })
+        this.setState({ isDisplayed: this.state.isDisplayed, selected: event.target.value });
 
-        this.props.cHandle(event.target.value)
+        this.props.cHandle(this, event.target.value);
     }
 
 
@@ -33,7 +40,7 @@ class Dropdown extends React.Component {
     render() {
         // is this.props.tag necessary
         return (
-            <div className = "Dropdown">
+            <div className="Dropdown">
                 <label className="settingsLabel">
                     {this.props.label} <ToolTipBtn id={"tooltip-dropdown-" + this.props.name} text={this.props.desc }/>
                     <br/>

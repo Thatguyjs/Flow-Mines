@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { ToolTip, ToolTipBtn } from './tooltip';
 
 class ValueField extends React.Component {
@@ -12,15 +13,15 @@ class ValueField extends React.Component {
         super(props);
         this.state = { value: this.props.value };
 
+		this.props.cInit(this);
     }
-    
+
 
     handleChange = event => {
         this.setState({value: event.target.value})
 
         // need to push up?
-        this.props.cHandle(event.target.value)
-        
+        this.props.cHandle(this, event.target.value);
     }
 
     // HandleClick necessary?
@@ -36,7 +37,7 @@ class ValueField extends React.Component {
                     <input type= "number" onChange={this.handleChange} placeholder={this.props.value} />
                 </label>
             </div>
-        )
+        );
     }
 }
 

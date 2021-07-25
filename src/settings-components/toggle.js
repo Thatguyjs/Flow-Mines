@@ -1,5 +1,6 @@
 import React from 'react';
 import { ToolTip, ToolTipBtn } from './tooltip';
+
 class ToggleButton extends React.Component {
 
     /* 
@@ -15,14 +16,15 @@ class ToggleButton extends React.Component {
         this.state = { isOn: this.props.isOn };
 
         this.handleClick = this.handleClick.bind(this);
+
+		this.props.cInit(this);
     }
 
     handleClick() {
-        this.setState(prevState => (
-            { isOn: !prevState.isOn }
-        ));
-
-        this.props.cHandle()
+        this.setState((prevState) => {
+			this.props.cHandle(this, !prevState.isOn);
+			return { isOn: !prevState.isOn };
+        });
     }
 
     render() {

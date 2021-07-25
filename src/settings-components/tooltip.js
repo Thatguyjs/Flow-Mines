@@ -17,7 +17,7 @@ class ToolTip extends React.Component{
                 }
             </div>
             
-        )
+        );
     }
     
     componentDidMount() {

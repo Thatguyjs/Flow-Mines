@@ -8,11 +8,13 @@ class ResetButton extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this)
+
+		this.props.cInit(this);
     }
     
     
     handleChange() {
-        this.props.cHandle()
+        this.props.cHandle(this);
     }
     
     render() {

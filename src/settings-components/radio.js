@@ -1,19 +1,22 @@
 import React from 'react';
 import RadioButton from './radiob';
 import { ToolTip, ToolTipBtn } from './tooltip';
+
 class RadioPanel extends React.Component {
     constructor(props) {
         super(props);
         
         this.state = {
             selected: this.props.selected
-        }
+        };
+
+		this.props.cInit(this);
     }
 
     handleChange = val => {
         this.setState({ selected: val });
 
-        this.props.cHandle(val);
+        this.props.cHandle(this, val);
         // need to push up?
     }
 
