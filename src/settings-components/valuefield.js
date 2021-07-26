@@ -11,14 +11,18 @@ class ValueField extends React.Component {
     */
     constructor(props) {
         super(props);
-        this.state = { value: this.props.value };
+
+        this.state = {
+			value: this.props.value || '',
+			placeholder: this.props.placeholder
+		};
 
 		this.props.cInit(this);
     }
 
 
     handleChange = event => {
-        this.setState({value: event.target.value})
+        this.setState({ value: event.target.value });
 
         // need to push up?
         this.props.cHandle(this, event.target.value);
@@ -32,9 +36,9 @@ class ValueField extends React.Component {
         return (
             <div className = "ValueField">
                 <label className="settingsLabel">
-                    {this.props.label} <ToolTipBtn id={"tooltip-value-" + this.props.name} text={this.props.desc }/>
+                    {this.props.label} <ToolTipBtn id={"tooltip-value-" + this.props.name} text={this.props.desc}/>
                     <br/>
-                    <input type= "number" onChange={this.handleChange} placeholder={this.props.value} />
+                    <input type= "number" onChange={this.handleChange} placeholder={this.props.placeholder} value={this.state.value} />
                 </label>
             </div>
         );

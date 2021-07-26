@@ -49,7 +49,7 @@ function collect(component) {
 
 	// Not the cleanest way to do things, but .setState() doesn't appear to work before a component mounts
 	if(component instanceof ValueField) {
-		// TODO: How?
+		component.state.value = setting;
 	}
 	else if(component instanceof ToggleButton) {
 		component.state.isOn = setting;
@@ -86,23 +86,23 @@ function Settings() {
 			<div id="settings-container">
 				<h3 id="settings-label">SETTINGS</h3>
 				<div id="settings-top">
-					<ValueField value="Value" label="Zip Code" cHandle={update} cInit={collect}/>
-					<ValueField value="Value" label="Square Footage" cHandle={update} cInit={collect}/>
-					<ValueField value="Value" label="Flow Rate" cHandle={update} cInit={collect}/>
-					<ValueField value="Value" label="Temp. Threshold" cHandle={update} cInit={collect}/>
-					<ValueField value="Value" label="Rain Amt. Threshold" cHandle={update} cInit={collect}/>
-					<ValueField value="Value" label="Rain Chance Threshold" cHandle={update} cInit={collect}/>
+					<ValueField placeholder="Value" label="Zip Code" cHandle={update} cInit={collect}/>
+					<ValueField placeholder="Value" label="Square Footage" cHandle={update} cInit={collect}/>
+					<ValueField placeholder="Value" label="Flow Rate" cHandle={update} cInit={collect}/>
+					<ValueField placeholder="Value" label="Temp. Threshold" cHandle={update} cInit={collect}/>
+					<ValueField placeholder="Value" label="Rain Amt. Threshold" cHandle={update} cInit={collect}/>
+					<ValueField placeholder="Value" label="Rain Chance Threshold" cHandle={update} cInit={collect}/>
 					<div id="setting-day-skip">
-						<ValueField value="Value" label="Day Skip" cHandle={update} cInit={collect}/>
+						<ValueField placeholder="Value" label="Day Skip" cHandle={update} cInit={collect}/>
 						<ToggleButton label="Auto" isOn={true} cHandle={update} cInit={collect}/>
 					</div>
 				</div>
 				<div id="settings-mid">
 					<RadioPanel panelName="Units" selected="Imperial" options={["Imperial", "Metric"]} cHandle={update} cInit={collect} />
 					<RadioPanel panelName="Display" selected="Wide" options={["Wide", "Narrow"]} cHandle={update} cInit={collect} />
-					<ValueField value="Value" label="Refresh Period" cHandle={update} cInit={collect} />
+					<ValueField placeholder="Value" label="Refresh Period" cHandle={update} cInit={collect} />
 					<RadioPanel panelName="Time Format" selected="12 Hour" options={["12 Hour", "24 Hour"]} cHandle={update} cInit={collect} />
-					<ValueField value="Value" label="Notification Timing" cHandle={update} cInit={collect} />
+					<ValueField placeholder="Value" label="Notification Timing" cHandle={update} cInit={collect} />
 				</div>
 				<div id="settings-bottom">
 					<Dropdown selected="Normal" options={['Small', 'Normal', 'Large']} label="Font Size" cHandle={update} cInit={collect} />

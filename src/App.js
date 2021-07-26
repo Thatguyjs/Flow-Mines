@@ -23,10 +23,7 @@ class WaterData {
 		this.duration = duration;
 	}
 
-
 	// base unit is always fahrenheit
-
-
 	gTempStr(units) {
 		var temp;
 		if (units === "c"){
@@ -36,8 +33,6 @@ class WaterData {
 		}
 		return temp + "°" + units.toUpperCase();
 	}
-	
-
 }
 
 
@@ -86,6 +81,7 @@ function App() {
 			</div>
 		</main>
 	</>);
+
 	// <Dropdown selected="0" options={["0", "1", "2"]} label="test" cHandle={() => { } }/>
 	// <RadioPanel panelName="test" selected="0" options={["0", "1", "2"]} cHandle={() => { } }/>
 	// <ToggleButton label="test" isOn = {false} cHandle = {() => { } }/>
