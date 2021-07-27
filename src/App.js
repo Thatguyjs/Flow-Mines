@@ -7,7 +7,6 @@ import background from "./images/background_hd.png";
 
 import Card from './Card.js';
 
-import ToggleButton from "./settings-components/settings.js";
 import RadioPanel from './settings-components/radio.js';
 import RadioButton from './settings-components/radiob.js';
 import Dropdown from "./settings-components/dropdown.js";
@@ -62,7 +61,6 @@ function App() {
 
 	// <Dropdown selected="0" options={["0", "1", "2"]} label="test" cHandle={() => { } }/>
 	// <RadioPanel panelName="test" selected="0" options={["0", "1", "2"]} cHandle={() => { } }/>
-	// <ToggleButton label="test" isOn = {false} cHandle = {() => { } }/>
 	// <ValueField value="test" label="name" cHandle={() => { } }/>
 }
 

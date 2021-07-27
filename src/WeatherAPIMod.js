@@ -155,7 +155,7 @@ function getAdvice(squareFt = 0, flowRt = 0.05, tmpThresh = 90, rainAmtThresh = 
     totalInches = totalInches-projectedPrecip;
 
     // could be a lot less sloppy with memory by only taking the necessary parametres, but eh.
-    windDays = [...days]
+    let windDays = [...days]
     days.sort(function (a, b) {
         if (a.wind < b.wind) {
            return -1;
@@ -166,15 +166,14 @@ function getAdvice(squareFt = 0, flowRt = 0.05, tmpThresh = 90, rainAmtThresh = 
         return 0;
     });
 
-    lowestWindDays = windDays.slice(0, 3); // amount of days returned can be changed by adjusting latter term
+    let lowestWindDays = windDays.slice(0, 3); // amount of days returned can be changed by adjusting latter term
     
     var minsPerDay = totalInches / flowRt; // this is where flow rate can be set
 
     for(let d in lowestWindDays) {
-        dayIdx = lowestWindDays[d].day
+        let dayIdx = lowestWindDays[d].day;
 
         advice[dayIdx].setAdvice("6 am", advice[dayIdx].minutes + minsPerDay, leastWindy)
-        
     }
 
     for (let i = 0; i < 7; i++){
@@ -190,3 +189,6 @@ function getAdvice(squareFt = 0, flowRt = 0.05, tmpThresh = 90, rainAmtThresh = 
 
     return advice;
 }
+
+
+export default WaterData;

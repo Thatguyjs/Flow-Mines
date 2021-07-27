@@ -1,69 +1,68 @@
 import React from 'react';
 
-class SettingStorage {
-	constructor(options={}) {
-		this.zipCode = options.zipCode;
 
-		this.squareFootage = options.squareFootage;
-		this.sprinklerFlow = options.sprinklerFlow;
+const Storage = {
+	zipCode: null,
 
-		this.minRainChance = options.minRainChance || 0.2;
-		this.minRainAmt = options.minRainAmt || 1;
+	squareFootage: null,
+	sprinklerFlow: null,
 
-		this.tempThresh = options.tempThresh;
+	minRainChance: 0.2,
+	minRainAmt: 1,
 
-		this.daySkip = options.daySkip;
-		this.daySkipAuto = options.daySkipAuto || true;
+	tempThresh: null,
 
-		// 7 days displayed, no need for setting
+	daySkip: null,
+	daySkipAuto: true,
 
-		this.displayFmt = options.displayFmt || "Narrow";
-		this.notifAdvance = options.notifAdvance;
-		this.notifDevices = options.notifDevices;
+	// 7 days displayed, no need for setting
 
-		this.units = options.units || "Imperial";
-		this.timeFormat = options.timeFormat || "12 Hour";
-		this.textSize = options.textSize || "Normal";
+	displayFmt: "Narrow",
+	notifAdvance: null,
+	notifDevices: null,
 
-		this.refreshPeriod = options.refreshPeriod;
-	}
+	units: "Imperial",
+	timeFormat: "Hour",
+	textSize: "Normal",
+
+	refreshPeriod: null,
 
 
 	// Read all settings from localStorage
-	#read() {
+	_read() {
 		let settings_str = localStorage.getItem('settings');
 
 		if(!settings_str) return {};
 		return JSON.parse(settings_str);
-	}
+	},
 
 
 	// Write a group of settings to localStorage
-	#write(obj) {
+	_write(obj) {
 		localStorage.setItem("settings", JSON.stringify(obj));
-	}
+	},
 
 
 	// Set / update a setting
 	set(name, value) {
 		if(!name in this) return; // Invalid setting name
 		this[name] = value;
-	}
+	},
 
 	// Get a setting
 	get(name) {
 		return this[name];
-	}
+	},
 
 
 	// Load all settings from localStorage
 	load() {
-		let saved = this.#read();
+		let saved = this._read();
 
 		for(let s in saved) {
 			this[s] = saved[s];
 		}
-	}
+	},
 
 
 	// Save all settings to localStorage
@@ -89,9 +88,10 @@ class SettingStorage {
 			obj[name] = this[name];
 		}
 
-		this.#write(obj);
+		this._write(obj);
 	}
 }
 
 
-export default SettingStorage;
+Storage.load();
+export default Storage;

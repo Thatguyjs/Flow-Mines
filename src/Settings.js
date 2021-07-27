@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import './Settings.css';
 
-import SettingStorage from "./settings-components/settings.js";
+import Storage from "./settings-components/storage.js";
 
 import Dropdown from './settings-components/dropdown.js';
 import RadioPanel from './settings-components/radio.js';
@@ -32,11 +32,6 @@ const settings_map = {
 };
 
 
-// Settings storage instance
-const storage = new SettingStorage();
-storage.load();
-
-
 // Collect all components when they're added & update them from storage if needed
 function collect(component) {
 	if(component instanceof ResetButton) return;
@@ -44,12 +39,12 @@ function collect(component) {
 	const label = component.props.label || component.props.panelName;
 	const setting_name = settings_map[label.toLowerCase()];
 
-	const setting = storage.get(setting_name);
+	const setting = Storage.get(setting_name);
 	if(setting === undefined) return;
 
 	// Not the cleanest way to do things, but .setState() doesn't appear to work before a component mounts
 	if(component instanceof ValueField) {
-		component.state.value = setting;
+		component.state.value = setting || '';
 	}
 	else if(component instanceof ToggleButton) {
 		component.state.isOn = setting;
@@ -67,8 +62,8 @@ function update(component, value) {
 	const label = component.props.label || component.props.panelName;
 	const setting_name = settings_map[label.toLowerCase()];
 
-	storage.set(setting_name, value);
-	storage.saveAll(); // Doesn't really affect performance, should be fine
+	Storage.set(setting_name, value);
+	Storage.saveAll(); // Doesn't really affect performance, should be fine
 }
 
 
