@@ -12,29 +12,7 @@ import RadioPanel from './settings-components/radio.js';
 import RadioButton from './settings-components/radiob.js';
 import Dropdown from "./settings-components/dropdown.js";
 import ValueField from './settings-components/valuefield.js';
-
-
-class WaterData {
-	constructor(dayName, weather, temp, startTime, duration) {
-		this.dayName = dayName;
-		this.weather = weather;
-		this.temp = temp;
-		this.startTime = startTime;
-		this.duration = duration;
-	}
-
-	// base unit is always fahrenheit
-	gTempStr(units) {
-		var temp;
-		if (units === "c"){
-			temp = (this.temp - 32)/1.8
-		} else {
-			temp = this.temp
-		}
-		return temp + "°" + units.toUpperCase();
-	}
-}
-
+import WaterData from './WeatherAPIMod.js'
 
 function App() {
 	const today = new WaterData("today", "sunny", 91, "8:00 AM", "20 min");
