@@ -1,4 +1,26 @@
+class WaterData {
+	constructor(dayName, weather, temp, startTime, duration) {
+		this.dayName = dayName;
+		this.weather = weather;
+		this.temp = temp;
+		this.startTime = startTime;
+		this.duration = duration;
+	}
 
+	// base unit is always fahrenheit
+	gTempStr(units) {
+		var temp;
+		if (units === "c"){
+			temp = (this.temp - 32)/1.8
+		} else {
+			temp = this.temp
+		}
+		return temp + "°" + units.toUpperCase();
+	}
+}
+
+export default WaterData;
+/*
 //see displayWeather() for more possible constructors to put here,
 //depending how we structure our program overall.
 
@@ -231,5 +253,6 @@ function displayWeather(){
     the projected wind for a day with weather[daynumber].wind_spd,
     the low temperature with weather[daynumber].min_temp or .low_temp
     Other options are here: https://www.weatherbit.io/api/weather-forecast-16-day
-    */
+    
 }
+*/

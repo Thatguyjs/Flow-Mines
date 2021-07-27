@@ -41,6 +41,12 @@
 <path d="M139.067 62.2667C134.467 39.2667 114.267 22 90 22C70.7333 22 54 32.9333 45.6667 48.9333C25.6 51.0667 10 68.0667 10 88.6667C10 110.733 27.9333 128.667 50 128.667H136.667C155.067 128.667 170 113.733 170 95.3333C170 77.7333 156.333 63.4667 139.067 62.2667Z" fill="#C4C4C4"/>
 </svg>
 
+<svg id = "icon-weather-none" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="24" y1="85" x2="74" y2="85" stroke="black" stroke-width="10"/>
+<line x1="107" y1="85" x2="157" y2="85" stroke="black" stroke-width="10"/>
+</svg>
+
+
 
 
 <svg id="icon-settings" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24">

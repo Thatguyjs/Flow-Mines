@@ -76,6 +76,7 @@ select{
 	font-family: "Source Sans Pro";
 	font-size: 1em;
 }
+
 .Settings {
 	color: #111;
 	font-family: "Source Sans Pro";
@@ -121,6 +122,18 @@ select{
 	border-width: 1px;
 	padding-left:10px;
 	padding-right:10px;
+	transition: 2s;
+}
+
+@keyframes reset{
+	0%{background-color:none}
+	50%{background-color: #111; color:#eee;}
+	100%{background-color:none}
+}
+
+.ResetButton > label > input:active{
+	animation-name:reset;
+	animation-duration: 0.5s;
 }
 
 .tooltip-content{
@@ -129,7 +142,13 @@ select{
 	border-width:1px;
 	padding:10px;
 	background:#eee;
-	transition: opacity 1s; /* animation needs work*/
+	animation-name:tooltip;
+	animation-duration:0.5s;
+}
+
+@keyframes tooltip{
+	from{opacity:0%}
+	to{opacity:100%}
 }
 
 .tooltip-spawner{
