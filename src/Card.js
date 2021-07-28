@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Storage from './settings-components/storage.js'
 
 class Card extends React.Component {
 
@@ -49,12 +49,12 @@ class Card extends React.Component {
 					<div className="card-weather">
 						<div><svg className = "largeIcon"><use href={`#icon-weather-${this.props.data.weather}`} /></svg></div>
 						{this.props.layout === 'wide' ? <div style={{ flexGrow: "5" }}/> : ''}
-						<div><span>{this.props.data.gTempStr("f")}</span></div>
+						<div><span>{this.props.data.gTempStr(Storage.get("units"))}</span></div>
 					</div>
 					<div style={{flexGrow: "20" }}/>
 					<div className="card-schedule">
 						<div><svg className = "smallIcon"><use href="#icon-clock" /></svg></div>	
-						<div><span>{this.props.data.startTime}</span></div>
+						<div><span>{this.props.data.gTimeStr(Storage.get("timeFormat"))}</span></div>
 
 						<div><svg  className = "smallIcon"><use href="#icon-hourglass" /></svg></div>
 						<div><span>{this.props.data.duration}</span></div>

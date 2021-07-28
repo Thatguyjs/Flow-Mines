@@ -68,6 +68,22 @@ function update(component, value) {
 
 
 function Settings() {
+	const SFDesc = "(Non-Functional) Square feet in your lawn."
+	const ZipDesc = "Zip Code is used to find weather data for your area, to calculate watering information."
+	const FRDesc = "Flow Rate of Sprinklers"
+	const TempThreshDesc = "If the weather is this temperature or higher do not water on this day."
+	const RainAmtThreshDesc = "If rain exceeeds this amount, no watering is required. Otherwise, rainfall is removed from the target amount of watering."
+
+	const RainChanceThreshDesc = "(Non-Functional) If rain chance is over this value, then the predicted amount of rain counts towards the rain amount threshold."
+	const WindThreshDesc = "(Non-Functional) If wind speed is over this amount, do not water on that day."
+
+	const UnitsDesc = "Sets DISPLAY units only. Settings are all in Imperial units."
+	const DisplayDesc = "Sets Display Type for week."
+	const TimeFmtDesc = "Sets Time format for display."
+
+	const NonFunctional = "Not Implemented Yet."
+	
+	
 	return ( <>
 		<header>
 			<Link id="nav-app" to="/">
@@ -81,26 +97,26 @@ function Settings() {
 			<div id="settings-container">
 				<h3 id="settings-label">SETTINGS</h3>
 				<div id="settings-top">
-					<ValueField placeholder="Value" label="Zip Code" cHandle={update} cInit={collect}/>
-					<ValueField placeholder="Value" label="Square Footage" cHandle={update} cInit={collect}/>
-					<ValueField placeholder="Value" label="Flow Rate" cHandle={update} cInit={collect}/>
-					<ValueField placeholder="Value" label="Temp. Threshold" cHandle={update} cInit={collect}/>
-					<ValueField placeholder="Value" label="Rain Amt. Threshold" cHandle={update} cInit={collect}/>
-					<ValueField placeholder="Value" label="Rain Chance Threshold" cHandle={update} cInit={collect}/>
+					<ValueField placeholder="Value" label="Zip Code" cHandle={update} cInit={collect} desc= {ZipDesc}/>
+					<ValueField placeholder="Value" label="Square Footage" cHandle={update} cInit={collect} desc={SFDesc}/>
+					<ValueField placeholder="Value" label="Flow Rate" cHandle={update} cInit={collect} desc={FRDesc}/>
+					<ValueField placeholder="Value" label="Temp. Threshold" cHandle={update} cInit={collect} desc={ TempThreshDesc}/>
+					<ValueField placeholder="Value" label="Rain Amt. Threshold" cHandle={update} cInit={collect} desc={RainAmtThreshDesc}/>
+					<ValueField placeholder="Value" label="Rain Chance Threshold" cHandle={update} cInit={collect} desc={RainChanceThreshDesc}/>
 					<div id="setting-day-skip">
-						<ValueField placeholder="Value" label="Day Skip" cHandle={update} cInit={collect}/>
-						<ToggleButton label="Auto" isOn={true} cHandle={update} cInit={collect}/>
+						<ValueField placeholder="Value" label="Day Skip" cHandle={update} cInit={collect} desc={NonFunctional }/>
+						<ToggleButton label="Auto" isOn={true} cHandle={update} cInit={collect} desc={NonFunctional}/>
 					</div>
 				</div>
 				<div id="settings-mid">
-					<RadioPanel panelName="Units" selected="Imperial" options={["Imperial", "Metric"]} cHandle={update} cInit={collect} />
-					<RadioPanel panelName="Display" selected="Wide" options={["Wide", "Narrow"]} cHandle={update} cInit={collect} />
-					<ValueField placeholder="Value" label="Refresh Period" cHandle={update} cInit={collect} />
-					<RadioPanel panelName="Time Format" selected="12 Hour" options={["12 Hour", "24 Hour"]} cHandle={update} cInit={collect} />
-					<ValueField placeholder="Value" label="Notification Timing" cHandle={update} cInit={collect} />
+					<RadioPanel panelName="Units" selected="Imperial" options={["Imperial", "Metric"]} cHandle={update} cInit={collect} desc={UnitsDesc }/>
+					<RadioPanel panelName="Display" selected="Wide" options={["Wide", "Narrow"]} cHandle={update} cInit={collect} desc={DisplayDesc}/>
+					<ValueField placeholder="Value" label="Refresh Period" cHandle={update} cInit={collect} desc={NonFunctional }/>
+					<RadioPanel panelName="Time Format" selected="12 Hour" options={["12 Hour", "24 Hour"]} cHandle={update} cInit={collect} desc={TimeFmtDesc}/>
+					<ValueField placeholder="Value" label="Notification Timing" cHandle={update} cInit={collect} desc={NonFunctional}/>
 				</div>
 				<div id="settings-bottom">
-					<Dropdown selected="Normal" options={['Small', 'Normal', 'Large']} label="Font Size" cHandle={update} cInit={collect} />
+					<Dropdown selected="Normal" options={['Small', 'Normal', 'Large']} label="Font Size" cHandle={update} cInit={collect} desc={ NonFunctional}/>
 					<ResetButton cHandle={update} cInit={collect} />
 				</div>
 			</div>
