@@ -13,9 +13,6 @@ import Dropdown from "./settings-components/dropdown.js";
 import ValueField from './settings-components/valuefield.js';
 import WaterData from './WeatherAPIMod.js'
 
-import Storage from './settings-components/storage.js'
-import { ToolTip, ToolTipBtn } from './settings-components/tooltip.js';
-
 function App() {
 	const today = new WaterData("today", "sunny", 91, "8:00 AM", "20 min");
 
@@ -29,7 +26,7 @@ function App() {
 		new WaterData("sunday", "cloudy", 80, "5:00 AM", "30 min")
 	];
 
-	const week_layout = Storage.get("displayFmt").toLowerCase(); // this will be set through settings
+	const week_layout = "narrow"; // this will be set through settings
 	return ( <>
 		<div id="bg-wrapper">
 			<img src={background} alt="" style={{height: "max(100vh, 100vw)", objectFit: "fill"} }/>
@@ -45,12 +42,12 @@ function App() {
 		</header>
 
 		<main>
-			<div id="content-container">
-
+			<div id = "content-container">
 				<div id="today-container">
 					<Card id={today.dayName} layout="wide" data={today}/>
 				</div>
 				<div className={"week-container " + "week-container-" + week_layout}>
+					<Card id={week[0].dayName} layout={week_layout } data={week[0]}/>
 					<Card id={week[1].dayName} layout={week_layout } data={week[1]}/>
 					<Card id={week[2].dayName} layout={week_layout } data={week[2]}/>
 					<Card id={week[3].dayName} layout={week_layout } data={week[3]}/>
@@ -61,8 +58,7 @@ function App() {
 			</div>
 		</main>
 	</>);
-	//			<ToolTipBtn id={"tooltip-toggle-main"} text={"test"}/>
-	//<Card id={week[0].dayName} layout={week_layout } data={week[0]}/>
+
 	// <Dropdown selected="0" options={["0", "1", "2"]} label="test" cHandle={() => { } }/>
 	// <RadioPanel panelName="test" selected="0" options={["0", "1", "2"]} cHandle={() => { } }/>
 	// <ValueField value="test" label="name" cHandle={() => { } }/>

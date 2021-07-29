@@ -1,10 +1,7 @@
-
 'use strict'
-import Storage from './settings-components/storage.js';
+
 const fetch = require('node-fetch');
 const moment = require('moment');
-
-
 
 class WaterData {
     constructor(dayName, weather = null, temp = null, startTime = null, duration = null, explanation = null) {
@@ -19,14 +16,12 @@ class WaterData {
     // base unit is always fahrenheit
     gTempStr(units) {
         var temp;
-        var unitLetter = "f";
-        if (units === "Metric") {
-            temp = Number((this.temp - 32) / 1.8 ).toFixed(0)
-            unitLetter = "c";
+        if (units === "c") {
+            temp = (this.temp - 32) / 1.8
         } else {
             temp = this.temp
         }
-        return temp + "°" + unitLetter.toUpperCase();
+        return temp + "°" + units.toUpperCase();
     }
     
     setWeather(temp, weather) {
@@ -43,7 +38,7 @@ class WaterData {
     gTimeStr(units) {
         if (this.startTime === "n/a") {
             return this.startTime
-        } else if (units == "24 Hour") {
+        } else if (units == "24hr") {
             return moment(this.startTime, ["h:mm A"]).format("HH:mm")
         } else {
             return this.startTime
@@ -136,14 +131,7 @@ const freezing = "The temperature will drop below freezing. You should blow out 
 const cooldown = "The temperature will be above 90 degrees today. You should water your lawn for 5 minutes to cool it off."
 const leastWindy = "This day is one of the three least windy days this week, so it is a good time to water your lawn."
 
-function getAdvice(){
-    var squareFt = Storage.get('squareFootage');
-    var flowRt = Storage.get('sprinklerFlow');
-    var tmpThresh = Storage.get('tempThresh');
-    var rainAmtThresh = Storage.get('minRainAmt');
-    var rainChanceThresh = Storage.get('minRainChance');
-
-
+function getAdvice(squareFt = 0, flowRt = 0.05, tmpThresh = 90, rainAmtThresh = 1,rainChanceThresh = 0){
     getDaysList();
 
     for (let i = 0; i < 7; i++){
