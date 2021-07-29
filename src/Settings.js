@@ -49,7 +49,6 @@ const settings_descs = {
 
 
 
-
 class Settings extends React.Component {
 	components_top = [
 		{ type: ValueField, label: 'Zip Code', desc: settings_descs.ZipDesc},

@@ -1,5 +1,5 @@
 import React from 'react';
-import Storage from './settings-components/storage.js'
+import Storage from './settings-components/storage.js';
 
 class Card extends React.Component {
 

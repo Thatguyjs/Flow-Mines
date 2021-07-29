@@ -15,7 +15,7 @@ class Dropdown extends React.Component {
     }
 
 	select(item) {
-		this.state.selected = item;
+		this.setState({ isDisplayed: this.state.isDisplayed, selected: item});
 		this.renderOptions();
 	}
 
