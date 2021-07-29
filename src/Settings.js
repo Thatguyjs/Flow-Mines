@@ -87,8 +87,13 @@ class Settings extends React.Component {
 		}
 
 		const setting = this._loadSettingFor(type, template);
+
 		if(setting !== null) {
 			template[setting[0]] = setting[1];
+			template.key = setting[2];
+		}
+		else {
+			template.key = 'ResetButton'; // Should be the only one without an associated setting
 		}
 
 		const component = React.createElement(type, {
@@ -108,20 +113,20 @@ class Settings extends React.Component {
 		const setting = Storage.get(settings_map[setting_name.toLowerCase()]);
 
 		if(type === ValueField) {
-			return ['value', setting || ''];
+			return ['value', setting || '', setting_name];
 		}
 		else if(type === ToggleButton) {
-			return ['isOn', setting];
+			return ['isOn', setting, setting_name];
 		}
 		else if(type === RadioPanel || type === Dropdown) {
-			return ['selected', setting];
+			return ['selected', setting, setting_name];
 		}
 
 		return null;
 	}
 
 
-	// Called when a setting changes
+	// Called when a component's value changes
 	update(component, value) {
 		if(component instanceof ResetButton) {
 			localStorage.clear();
