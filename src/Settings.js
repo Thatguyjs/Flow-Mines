@@ -10,8 +10,8 @@ import ResetButton from './settings-components/reset.js';
 import ToggleButton from './settings-components/toggle.js';
 import ValueField from './settings-components/valuefield.js';
 
-import React, {useState} from "react";
-import App from "./App";
+import React from "react";
+
 
 // Name mapping, so components link to the correct setting
 const settings_map = {
@@ -42,6 +42,7 @@ const settings_descs = {
 	Units : "Sets DISPLAY units only. Settings are all in Imperial units.",
 	Display : "Sets Display Type for week.",
 	TimeFmt : "Sets Time format for display.",
+	FontSize : "Changes font size of text on the main page.",
 	NonFunctional : "Not Implemented Yet."
 }
 
@@ -50,25 +51,25 @@ const settings_descs = {
 class Settings extends React.Component {
 	components_top = [
 		{ type: ValueField, label: 'Zip Code', desc: settings_descs.ZipDesc},
-		/* { type: ValueField, label: 'Square Footage', desc: settings_descs.SF}, */
+		// { type: ValueField, label: 'Square Footage', desc: settings_descs.SF},
 		{ type: ValueField, label: 'Flow Rate', desc: settings_descs.FR},
 		{ type: ValueField, label: 'Temp. Threshold', desc: settings_descs.TempThresh},
 		{ type: ValueField, label: 'Rain Amt. Threshold', desc: settings_descs.RainAmtThresh},
 		{ type: ValueField, label: 'Rain Chance Threshold', desc: settings_descs.RainChanceThresh },
-		{ type: ValueField, label: 'Day Skip', desc: settings_descs.NonFunctional},
-		{ type: ToggleButton, label: 'Auto', isOn: true, desc: settings_descs.NonFunctional }
+		// { type: ValueField, label: 'Day Skip', desc: settings_descs.NonFunctional},
+		// { type: ToggleButton, label: 'Auto', isOn: true, desc: settings_descs.NonFunctional }
 	];
 
 	components_mid = [
 		{ type: RadioPanel, panelName: 'Units', selected: 'Imperial', options: ['Imperial', 'Metric'], desc: settings_descs.Units },
 		{ type: RadioPanel, panelName: 'Display', selected: 'Narrow', options: ['Wide', 'Narrow'], desc: settings_descs.Display },
-		{ type: ValueField, label: 'Refresh Period', desc: settings_descs.NonFunctional },
+		// { type: ValueField, label: 'Refresh Period', desc: settings_descs.NonFunctional },
 		{ type: RadioPanel, panelName: 'Time Format', selected: '12 Hour', options: ['12 Hour', '24 Hour'], desc: settings_descs.TimeFmt },
-		{ type: ValueField, label: 'Notification Timing', desc: settings_descs.NonFunctional }
+		// { type: ValueField, label: 'Notification Timing', desc: settings_descs.NonFunctional }
 	];
 
 	components_bottom = [
-		{ type: Dropdown, label: 'Font Size', selected: 'Normal', options: ['Small', 'Normal', 'Large'], desc: settings_descs.NonFunctional },
+		{ type: Dropdown, label: 'Font Size', selected: 'Normal', options: ['Small', 'Normal', 'Large'], desc: settings_descs.FontSize },
 		{ type: ResetButton }
 	];
 

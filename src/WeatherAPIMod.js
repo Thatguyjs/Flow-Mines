@@ -150,7 +150,7 @@ async function getAdvice() {
 	if (Storage.get('minRainAmt') !== null) {
 		rainAmtThresh = Storage.get('minRainAmt');
 	}
-	var rainChanceThresh = Storage.get('minRainChance');
+	// var rainChanceThresh = Storage.get('minRainChance');
 
 
 	getDaysList();
