@@ -111,6 +111,23 @@ main {
 
 }
 
+@media only screen and (min-device-width : 0px) and (max-device-width : 360px) {
+	.week-container-narrow {
+		height:clamp(310px, 50vh, 50vh);
+		justify-content: left; /* needs work: too wide on desktop. if using center, then not all content appears on mobile*/
+		overflow-x:scroll;
+	}
+}
+
+@media only screen and (min-device-width : 360px) and (max-device-width : 480px) {
+	.week-container-narrow {
+		height:clamp(310px, 57vh, 57vh);
+		justify-content: left; /* needs work: too wide on desktop. if using center, then not all content appears on mobile*/
+		overflow-x:scroll;
+	}
+}
+
+
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 	#today-container .card {
 		width: 80%;

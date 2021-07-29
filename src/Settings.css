@@ -144,6 +144,10 @@ select{
 	background:#eee;
 	animation-name:tooltip;
 	animation-duration:0.5s;
+
+	max-width:150px;
+	word-wrap:normal;
+	
 }
 
 @keyframes tooltip{

@@ -17,6 +17,8 @@ import Storage from './settings-components/storage.js'
 function App() {
 	const today = new WaterData("today", "sunny", 91, "8:00 AM", "20 min");
 
+	// upon receiving list of waterdata from weather api, make sure to change the
+	// name of the first one to "today".
 	const week = [
 		new WaterData("today", "sunny", 60, "5:00 AM", "30 min"),
 		new WaterData("tuesday", "partly-cloudy", 53, "5:00 AM", "30 min"),

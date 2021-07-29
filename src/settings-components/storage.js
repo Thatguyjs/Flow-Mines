@@ -22,7 +22,7 @@ const Storage = {
 	notifDevices: null,
 
 	units: "Imperial",
-	timeFormat: "Hour",
+	timeFormat: "12 Hour",
 	textSize: "Normal",
 
 	refreshPeriod: null,

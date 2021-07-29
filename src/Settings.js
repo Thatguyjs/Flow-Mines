@@ -33,6 +33,22 @@ const settings_map = {
 	"font size": "textSize"
 };
 
+const settings_descriptions = {
+	SFDesc: "(Non-Functional) Square feet in your lawn.",
+	ZipDesc: "Zip Code is used to find weather data for your area, to calculate watering information.",
+	FRDesc: "Flow Rate of Sprinklers",
+	TempThreshDesc : "If the weather is this temperature or higher do not water on this day.",
+	RainAmtThreshDesc : "If rain exceeeds this amount, no watering is required. Otherwise, rainfall is removed from the target amount of watering.",
+
+	RainChanceThreshDesc : "(Non-Functional) If rain chance is over this value, then the predicted amount of rain counts towards the rain amount threshold.",
+	WindThreshDesc : "(Non-Functional) If wind speed is over this amount, do not water on that day.",
+
+	UnitsDesc : "Sets DISPLAY units only. Settings are all in Imperial units.",
+	DisplayDesc : "Sets Display Type for week.",
+	TimeFmtDesc : "Sets Time format for display.",
+	NonFunctional : "Not Implemented Yet.",
+}
+
 
 class Settings extends React.Component {
 	components_top = [
