@@ -11,7 +11,7 @@ import './common/icons.js';
 ReactDOM.render(
 	<React.StrictMode>
 		<div id="icon-container"></div>
-		<BrowserRouter basename={process.env.PUBLIC_URL}>
+		<BrowserRouter basename={process.env.PUBLIC_URL + '/'}>
 			<Switch>
 				<Route exact path="/" component={App} />
 				<Route path="/settings" component={Settings} />
