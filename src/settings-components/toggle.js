@@ -16,8 +16,6 @@ class ToggleButton extends React.Component {
         this.state = { isOn: this.props.isOn };
 
         this.handleClick = this.handleClick.bind(this);
-
-		this.props.cInit(this);
     }
 
     handleClick() {

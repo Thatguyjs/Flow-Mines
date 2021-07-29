@@ -9,8 +9,6 @@ class RadioPanel extends React.Component {
         this.state = {
             selected: this.props.selected
         };
-
-		this.props.cInit(this);
     }
 
     handleChange = val => {

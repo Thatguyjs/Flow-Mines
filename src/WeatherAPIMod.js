@@ -1,5 +1,7 @@
 'use strict'
 
+import Storage from './settings-components/storage.js'
+
 const fetch = require('node-fetch');
 const moment = require('moment');
 
