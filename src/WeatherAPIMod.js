@@ -130,9 +130,9 @@ function getDaysList(){
 
 const suffRain = "It will rain enough this week that you do not need to water your lawn.";
 const freezing = "The temperature will drop below freezing. You should blow out your sprinklers.";
-const cooldown = "The temperature will be above "+Storage.get('tempThresh')+" degrees today. You should water your lawn for 5 minutes to cool it off.";
+const cooldown = "The temperature may be above "+Storage.get('tempThresh')+" degrees today. You should water your lawn for 5 minutes to cool it off.";
 const leastWindy = "This day is one of the three least windy days this week, so it is a good time to water your lawn.";
-
+const otherDays = "Watering will already be done on other days this week."
 
 async function getAdvice() {
 	// Wait for the weather data to arrive
@@ -164,7 +164,7 @@ async function getAdvice() {
 		var date = new Date(dateBits[0], dateBits[1] - 1, dateBits[2]);
 
 		advice[i].setWeather(date.toDateString().substring(0, 3), corrDay.avg, corrDay.weather);
-		advice[i].setAdvice("n/a", 0, null);
+		advice[i].setAdvice("n/a", "0 min", otherDays);
 	}
 
 	var totalInches = rainAmtThresh;
@@ -173,7 +173,7 @@ async function getAdvice() {
 	//checks if there will be enough precipitation that the user doesn't need to water their lawn
 	if (projectedPrecip >= rainAmtThresh) {
 		for(let i = 0; i < 8; i++) {
-			advice[i].setAdvice("n/a", 0, suffRain);
+			advice[i].setAdvice("n/a", "0 min", suffRain);
 		}
 
 		applyAdvice();
@@ -197,14 +197,14 @@ async function getAdvice() {
 
 	let lowestWindDays = windDays.slice(0, 3); // amount of days returned can be changed by adjusting latter term
 	var totalMins = totalInches * flowRt;
-	var minsPerDay = totalMins / 3; // this is where flow rate can be set
+	var minsPerDay = Number(totalMins / 3).toFixed(0) + " min"; // this is where flow rate can be set
 
 	for (let i = 0; i < 8; i++){
 		if(days[i].low <= 32) {
-			advice[i].setAdvice("n/a", 0, freezing);
+			advice[i].setAdvice("n/a", "0 min", freezing);
 		}
 		if(days[i].high >= tmpThresh) {
-			advice[i].setAdvice("6 am", 5, cooldown);
+			advice[i].setAdvice("6 am", "5 min", cooldown);
 		}
 	}
 
