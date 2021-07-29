@@ -90,10 +90,7 @@ function getWeather(zip) {
             weather.country = info.country_code;
         }).then(function () {
             console.log(getAdvice());
-        }).catch(function () { })
-        
-        ;
-}
+        }).catch(function () { });
 
 getWeather(Storage.zipCode)
 var x = new WaterData(" ", null, null, "8:00 am")

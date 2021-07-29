@@ -2,11 +2,7 @@
 	height: calc(100vh - 50px); /* the last dropdown overflows screen on mobile*/
 }
 
-@media only screen and (min-device-width : 350px) and (max-device-width : 812px) {
-	#main-settings {
-		height: auto; /* the last dropdown overflows screen on mobile*/
-	}
-}
+
 
 #settings-container {
 	padding: 0 20%;
@@ -19,6 +15,11 @@
 	color: #111;
 	font-family: "Source Sans Pro";
 	font-weight: 300;
+}
+@media only screen and (min-device-width : 350px) and (max-device-width : 812px) {
+	#settings-container {
+		height: 2000px; /* the last dropdown overflows screen on mobile*/
+	}
 }
 
 #settings-label {

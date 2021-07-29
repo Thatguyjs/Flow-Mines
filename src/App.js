@@ -27,8 +27,9 @@ function App() {
 		new WaterData("friday", "cloudy", 67, "5:00 AM", "30 min"),
 		new WaterData("saturday", "cloudy", 58, "5:00 AM", "30 min"),
 		new WaterData("sunday", "cloudy", 80, "5:00 AM", "30 min"),
+
 		new WaterData("monday", "cloudy", 80, "5:00 AM", "30 min")
-	];
+  ]
 
 	const week_layout = Storage.get("displayFmt").toLowerCase(); // this will be set through settings
 	return ( <>
