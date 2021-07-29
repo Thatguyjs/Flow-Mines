@@ -159,7 +159,7 @@ class Settings extends React.Component {
 	render() {
 		return ( <>
 			<header>
-				<Link id="nav-app" to="/" onClick = {() => { window.location.href = "/"; }}>
+				<Link id="nav-app" to="/" onClick = {() => { window.location.href = "/Flow-Mines"; }}>
 					<svg><use href="#icon-back" /></svg>
 				</Link>
 
