@@ -130,7 +130,7 @@ function getDaysList(){
 
 const suffRain = "It will rain enough this week that you do not need to water your lawn.";
 const freezing = "The temperature will drop below freezing. You should blow out your sprinklers.";
-const cooldown = "The temperature may be above "+Storage.get('tempThresh')+" degrees today. You should water your lawn for 5 minutes to cool it off.";
+const cooldown = `The temperature may be above ${Storage.get('tempThresh') || 90} degrees today. You should water your lawn for 5 minutes to cool it off.`;
 const leastWindy = "This day is one of the three least windy days this week, so it is a good time to water your lawn.";
 const otherDays = "Watering will already be done on other days this week."
 
@@ -145,10 +145,7 @@ async function getAdvice() {
 	if (Storage.get('sprinklerFlow') !== null && squareFt !== null) {
 		flowRt = (1/(Storage.get('sprinklerFlow')))*(squareFt)*(144/231);
 	}
-	var tmpThresh = 90;
-	if (Storage.get('tempThresh') !== null) {
-		tmpThresh = Storage.get('tempThresh');
-	}
+	var tmpThresh = Storage.get("tempThresh") || 90;
 	var rainAmtThresh = 1;
 	if (Storage.get('minRainAmt') !== null) {
 		rainAmtThresh = Storage.get('minRainAmt');
@@ -185,7 +182,7 @@ async function getAdvice() {
 	// could be a lot less sloppy with memory by only taking the necessary parametres, but eh.
 	let windDays = [...days];
 
-	days.sort(function (a, b) {
+	windDays.sort(function (a, b) {
 		if (a.wind < b.wind) {
 			return -1;
 		}
