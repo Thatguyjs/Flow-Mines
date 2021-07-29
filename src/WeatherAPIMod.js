@@ -44,7 +44,7 @@ class WaterData {
     gTimeStr(units) {
         if (this.startTime === "n/a") {
             return this.startTime
-        } else if (units == "24 Hour") {
+        } else if (units === "24 Hour") {
             return moment(this.startTime, ["h:mm A"]).format("HH:mm")
         } else {
             return this.startTime
@@ -92,7 +92,7 @@ function getWeather(zip){
             weather.country = info.country_code;
         }).then(function(){
             console.log(getAdvice());
-        });
+        }).catch(function () { });
 }
 
 getWeather(Storage.zipCode)
@@ -100,11 +100,11 @@ var x = new WaterData(" ", null, null, "8:00 am")
 console.log(x.gTimeStr("24hr"))
 
 function convWeather(code) {
-    if ((200 <= code && code <= 522) || (code == 900)) {
+    if ((200 <= code && code <= 522) || (code === 900)) {
         return "rainy"
     } else if ((700 <= code && code <= 751) || (803<=code && code <=804)) {
         return "cloudy"
-    } else if (code == 800) {
+    } else if (code === 800) {
         return "sunny"
     } else if (801 <= code && code <= 802) {
         return "partly-cloudy"

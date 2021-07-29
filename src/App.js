@@ -20,12 +20,13 @@ function App() {
 	const today = new WaterData("today", "sunny", 91, "8:00 AM", "20 min");
 
 	const week = [
-		new WaterData("monday", "sunny", 60, "5:00 AM", "30 min"),
+		new WaterData("today", "sunny", 60, "5:00 AM", "30 min"),
 		new WaterData("tuesday", "partly-cloudy", 53, "5:00 AM", "30 min"),
 		new WaterData("wednesday", "cloudy", 62, "5:00 AM", "30 min"),
 		new WaterData("thursday", "rainy", 41, "5:00 AM", "30 min"),
 		new WaterData("friday", "cloudy", 67, "5:00 AM", "30 min"),
 		new WaterData("saturday", "cloudy", 58, "5:00 AM", "30 min"),
+		new WaterData("sunday", "cloudy", 80, "5:00 AM", "30 min"),
 		new WaterData("sunday", "cloudy", 80, "5:00 AM", "30 min")
 	];
 
@@ -48,7 +49,7 @@ function App() {
 			<div id="content-container">
 
 				<div id="today-container">
-					<Card id={today.dayName} layout="wide" data={today}/>
+					<Card id={week[0].dayName} layout="wide" data={week[0]}/>
 				</div>
 				<div className={"week-container " + "week-container-" + week_layout}>
 					<Card id={week[1].dayName} layout={week_layout } data={week[1]}/>
@@ -56,7 +57,8 @@ function App() {
 					<Card id={week[3].dayName} layout={week_layout } data={week[3]}/>
 					<Card id={week[4].dayName} layout={week_layout } data={week[4]}/>
 					<Card id={week[5].dayName} layout={week_layout } data={week[5]}/>
-					<Card id={week[6].dayName} layout={week_layout } data={week[6]}/>
+					<Card id={week[6].dayName} layout={week_layout} data={week[6]} />
+					<Card id={week[7].dayName} layout={week_layout } data={week[7]}/>
 				</div>
 			</div>
 		</main>

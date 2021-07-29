@@ -106,7 +106,7 @@ main {
 
 .week-container-narrow .card {
 	margin: 0 6px 0 6px;
-	width: clamp(100px, 16%, 16%);
+	width: clamp(100px, 14%, 14%);
 	height: clamp(300px, 50vh, 50vh); 
 
 }

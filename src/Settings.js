@@ -33,29 +33,45 @@ const settings_map = {
 	"font size": "textSize"
 };
 
+const settings_descs = {
+	SF : "(Non-Functional) Square feet in your lawn.",
+	Zip : "Zip Code is used to find weather data for your area, to calculate watering information.",
+	FR : "Flow Rate of Sprinklers",
+	TempThresh : "If the weather is this temperature or higher do not water on this day.",
+	RainAmtThresh : "If rain exceeeds this amount, no watering is required. Otherwise, rainfall is removed from the target amount of watering.",
+	RainChanceThresh : "(Non-Functional) If rain chance is over this value, then the predicted amount of rain counts towards the rain amount threshold.",
+	WindThresh : "(Non-Functional) If wind speed is over this amount, do not water on that day.",
+	Units : "Sets DISPLAY units only. Settings are all in Imperial units.",
+	Display : "Sets Display Type for week.",
+	TimeFmt : "Sets Time format for display.",
+	NonFunctional : "Not Implemented Yet."
+}
+
+
+
 
 class Settings extends React.Component {
 	components_top = [
-		{ type: ValueField, label: 'Zip Code', desc: 'Zip Code is used to find weather data for your area' },
-		{ type: ValueField, label: 'Square Footage', desc: '(Non-Functional) Square feet in your lawn' },
-		{ type: ValueField, label: 'Flow Rate', desc: 'Flow Rate of Sprinklers' },
-		{ type: ValueField, label: 'Temp. Threshold', desc: 'If the weather is this temperature or higher do not water on this day' },
-		{ type: ValueField, label: 'Rain Amt. Threshold', desc: 'If rain exceeeds this amount, no watering is required' },
-		{ type: ValueField, label: 'Rain Chance Threshold', desc: '(Non-Functional) If rain chance is over this value, then the predicted amount of rain counts towards the rain amount threshold' },
-		{ type: ValueField, label: 'Day Skip', desc: 'Not Implemented Yet' },
-		{ type: ToggleButton, label: 'Auto', isOn: true, desc: 'Not Implemented Yet' }
+		{ type: ValueField, label: 'Zip Code', desc: settings_descs.ZipDesc},
+		{ type: ValueField, label: 'Square Footage', desc: settings_descs.SF},
+		{ type: ValueField, label: 'Flow Rate', desc: settings_descs.FR},
+		{ type: ValueField, label: 'Temp. Threshold', desc: settings_descs.TempThresh},
+		{ type: ValueField, label: 'Rain Amt. Threshold', desc: settings_descs.RainAmtThresh},
+		{ type: ValueField, label: 'Rain Chance Threshold', desc: settings_descs.RainChanceThresh },
+		{ type: ValueField, label: 'Day Skip', desc: settings_descs.NonFunctional},
+		{ type: ToggleButton, label: 'Auto', isOn: true, desc: settings_descs.NonFunctional }
 	];
 
 	components_mid = [
-		{ type: RadioPanel, panelName: 'Units', selected: 'Imperial', options: ['Imperial', 'Metric'], desc: 'Sets DISPLAY units only. Settings are all in Imperial units' },
-		{ type: RadioPanel, panelName: 'Display', selected: 'Narrow', options: ['Wide', 'Narrow'], desc: 'Sets Display Type for week' },
-		{ type: ValueField, label: 'Refresh Period', desc: 'Not Implemented Yet' },
-		{ type: RadioPanel, panelName: 'Time Format', selected: '12 Hour', options: ['12 Hour', '24 Hour'], desc: 'Sets Time format for display' },
-		{ type: ValueField, label: 'Notification Timing', desc: 'Not Implemented Yet' }
+		{ type: RadioPanel, panelName: 'Units', selected: 'Imperial', options: ['Imperial', 'Metric'], desc: settings_descs.Units },
+		{ type: RadioPanel, panelName: 'Display', selected: 'Narrow', options: ['Wide', 'Narrow'], desc: settings_descs.Display },
+		{ type: ValueField, label: 'Refresh Period', desc: settings_descs.NonFunctional },
+		{ type: RadioPanel, panelName: 'Time Format', selected: '12 Hour', options: ['12 Hour', '24 Hour'], desc: settings_descs.TimeFmt },
+		{ type: ValueField, label: 'Notification Timing', desc: settings_descs.NonFunctional }
 	];
 
 	components_bottom = [
-		{ type: Dropdown, label: 'Font Size', selected: 'Normal', options: ['Small', 'Normal', 'Large'], desc: 'Not Implemented Yet' },
+		{ type: Dropdown, label: 'Font Size', selected: 'Normal', options: ['Small', 'Normal', 'Large'], desc: settings_descs.NonFunctional },
 		{ type: ResetButton }
 	];
 
