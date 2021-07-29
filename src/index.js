@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
 import App from './App';
@@ -11,12 +11,12 @@ import './common/icons.js';
 ReactDOM.render(
 	<React.StrictMode>
 		<div id="icon-container"></div>
-		<HashRouter>
+		<BrowserRouter basename={process.env.PUBLIC_URL}>
 			<Switch>
 				<Route exact path="/" component={App} />
 				<Route path="/settings" component={Settings} />
 			</Switch>
-		</HashRouter>
+		</BrowserRouter>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
