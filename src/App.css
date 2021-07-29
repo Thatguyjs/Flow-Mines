@@ -106,7 +106,7 @@ main {
 
 .week-container-narrow .card {
 	margin: 0 6px 0 6px;
-	width: clamp(100px, 16%, 16%);
+	width: clamp(100px, 14%, 14%);
 	height: clamp(300px, 50vh, 50vh); 
 
 }
@@ -126,7 +126,6 @@ main {
 		overflow-x:scroll;
 	}
 }
-
 
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
@@ -301,23 +300,4 @@ main {
 
 .card-narrow .card-schedule svg {
 	margin-top: 0px;
-}
-
-
-/* Main Tooltip */
-.tooltip-spawner{
-	display:inline-block;
-}
-.tooltip-spawner > button{
-	fill:none;
-	background: none;
-	border:none;
-	width:15px;
-	height:15px;
-	padding-left:0;
-}
-
-.buttonSVG{
-	width:15px;
-	height:15px;
 }

@@ -1,10 +1,9 @@
-
 'use strict'
-import Storage from './settings-components/storage.js';
+
+import Storage from './settings-components/storage.js'
+
 const fetch = require('node-fetch');
 const moment = require('moment');
-
-
 
 class WaterData {
     constructor(dayName = null, weather = null, temp = null, startTime = null, duration = null, explanation = null) {
@@ -19,14 +18,14 @@ class WaterData {
     // base unit is always fahrenheit
     gTempStr(units) {
         var temp;
-        var unitLetter = "f";
+        var unitIndic = "f";
         if (units === "Metric") {
-            temp = Number((this.temp - 32) / 1.8 ).toFixed(0)
-            unitLetter = "c";
+            temp = Number((this.temp - 32) / 1.8).toFixed(0);
+            unitIndic = "c";
         } else {
             temp = this.temp
         }
-        return temp + "°" + unitLetter.toUpperCase();
+        return temp + "°" + unitIndic.toUpperCase();
     }
     
     setWeather(day, temp, weather) {
@@ -44,7 +43,7 @@ class WaterData {
     gTimeStr(units) {
         if (this.startTime === "n/a") {
             return this.startTime
-        } else if (units == "24 Hour") {
+        } else if (units === "24 Hour") {
             return moment(this.startTime, ["h:mm A"]).format("HH:mm")
         } else {
             return this.startTime
@@ -71,40 +70,38 @@ const key = "549d95480b954727bd5f2ff0a254e8b7";
 //need a place to input zipcode (box or whatever) - then call getWeather(zip), with zip being the zipcode
 
 // get weather from API
-function getWeather(zip){
+function getWeather(zip) {
     let api = `https://api.weatherbit.io/v2.0/forecast/daily?postal_code=${zip}&units=I&key=${key}`;
     
     fetch(api)
-        .then(function(response){
+        .then(function (response) {
             let info = response.json();
             return info;
             
         })
         //the response is a list of lists. There is presumably an easier way to do this than the following for loop, but... The loop works.
-        .then(function(info){
-            for(let i=0; i<16; i++)
-            {
-                weather[i] = info.data[i] 
+        .then(function (info) {
+            for (let i = 0; i < 16; i++) {
+                weather[i] = info.data[i]
             }
             
             //weather.iconId = data.weather.icon;
             weather.city = info.city_name;
             weather.country = info.country_code;
-        }).then(function(){
+        }).then(function () {
             console.log(getAdvice());
-        });
-}
+        }).catch(function () { });
 
 getWeather(Storage.zipCode)
 var x = new WaterData(" ", null, null, "8:00 am")
 console.log(x.gTimeStr("24hr"))
 
 function convWeather(code) {
-    if ((200 <= code && code <= 522) || (code == 900)) {
+    if ((200 <= code && code <= 522) || (code === 900)) {
         return "rainy"
     } else if ((700 <= code && code <= 751) || (803<=code && code <=804)) {
         return "cloudy"
-    } else if (code == 800) {
+    } else if (code === 800) {
         return "sunny"
     } else if (801 <= code && code <= 802) {
         return "partly-cloudy"
