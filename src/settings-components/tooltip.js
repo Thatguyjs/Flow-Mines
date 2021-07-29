@@ -1,9 +1,9 @@
 import React from 'react';
 
-class ToolTip extends React.Component{
+class ToolTip extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { visible: false}
+        this.state = { visible: false };
     }
 
     render() {
@@ -16,26 +16,17 @@ class ToolTip extends React.Component{
                     ) : null
                 }
             </div>
-            
         );
     }
     
-    componentDidMount() {
-        
-    }
-
-    componentWillUnmount() {
-
-    }
-
     show() {
-        this.setState({ visible: true })
+        this.setState({ visible: true });
     }
 
     hide() {
-        this.setState({visible: false})
+        this.setState({ visible: false });
     }
-        
+
 }
 
 class ToolTipBtn extends React.Component{
@@ -65,11 +56,9 @@ class ToolTipBtn extends React.Component{
                     </svg>
                 </button>
                 <ToolTip ref={this.tooltip} info={this.props.text }/>
-            </div>)
-    }
-    componentDidMount (){
-
+            </div>
+		);
     }
 }
 
-export { ToolTip, ToolTipBtn}
+export { ToolTip, ToolTipBtn };

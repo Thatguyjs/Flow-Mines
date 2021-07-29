@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { ToolTip, ToolTipBtn } from './tooltip';
+import { ToolTipBtn } from './tooltip';
 
 class ValueField extends React.Component {
     /*
@@ -27,7 +26,6 @@ class ValueField extends React.Component {
     }
 
     // HandleClick necessary?
-
 
 
     render() {

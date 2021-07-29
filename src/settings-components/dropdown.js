@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToolTip, ToolTipBtn } from './tooltip';
+import { ToolTipBtn } from './tooltip';
 
 class Dropdown extends React.Component {
     /* 
@@ -34,7 +34,6 @@ class Dropdown extends React.Component {
     }
 
 
-
     render() {
         // is this.props.tag necessary
         return (
@@ -47,7 +46,7 @@ class Dropdown extends React.Component {
                     </select>
                 </label>
             </div>
-        )
+        );
     }
 }
 

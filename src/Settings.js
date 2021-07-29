@@ -10,8 +10,6 @@ import ResetButton from './settings-components/reset.js';
 import ToggleButton from './settings-components/toggle.js';
 import ValueField from './settings-components/valuefield.js';
 
-import { ToolTip, ToolTipBtn } from "./settings-components/tooltip";
-
 import React from "react";
 
 
@@ -34,11 +32,11 @@ const settings_map = {
 };
 
 const settings_descs = {
-	SF : "(Non-Functional) Square feet in your lawn.",
+	/* SF : "(Non-Functional) Square feet in your lawn.", */
 	Zip : "Zip Code is used to find weather data for your area, to calculate watering information.",
-	FR : "Flow Rate of Sprinklers",
+	FR : "Flow rate of your sprinkler head in gallons per minute",
 	TempThresh : "If the weather is this temperature or higher do not water on this day.",
-	RainAmtThresh : "If rain exceeeds this amount, no watering is required. Otherwise, rainfall is removed from the target amount of watering.",
+	RainAmtThresh : "If rain exceeeds this amount (inches per week), no watering is required. Otherwise, rainfall is removed from the target amount of watering.",
 	RainChanceThresh : "(Non-Functional) If rain chance is over this value, then the predicted amount of rain counts towards the rain amount threshold.",
 	WindThresh : "(Non-Functional) If wind speed is over this amount, do not water on that day.",
 	Units : "Sets DISPLAY units only. Settings are all in Imperial units.",
@@ -52,7 +50,7 @@ const settings_descs = {
 class Settings extends React.Component {
 	components_top = [
 		{ type: ValueField, label: 'Zip Code', desc: settings_descs.ZipDesc},
-		{ type: ValueField, label: 'Square Footage', desc: settings_descs.SF},
+		/* { type: ValueField, label: 'Square Footage', desc: settings_descs.SF}, */
 		{ type: ValueField, label: 'Flow Rate', desc: settings_descs.FR},
 		{ type: ValueField, label: 'Temp. Threshold', desc: settings_descs.TempThresh},
 		{ type: ValueField, label: 'Rain Amt. Threshold', desc: settings_descs.RainAmtThresh},

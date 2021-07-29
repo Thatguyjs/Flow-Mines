@@ -39,7 +39,7 @@ class RadioButton extends React.Component{
                     <span>{this.props.value}</span>
                 </label>
             </div>
-        )
+        );
     }
 }
 

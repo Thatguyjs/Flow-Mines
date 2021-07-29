@@ -1,5 +1,4 @@
-import React from 'react';
-
+// Load / Store settings with localStorage
 
 const Storage = {
 	zipCode: null,

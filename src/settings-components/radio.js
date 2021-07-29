@@ -1,6 +1,6 @@
 import React from 'react';
 import RadioButton from './radiob';
-import { ToolTip, ToolTipBtn } from './tooltip';
+import { ToolTipBtn } from './tooltip';
 
 class RadioPanel extends React.Component {
     constructor(props) {
@@ -37,7 +37,7 @@ class RadioPanel extends React.Component {
                 <h3>{this.props.panelName }</h3> <ToolTipBtn id={"tooltip-radio-" + this.props.name} text={this.props.desc }/>
                 {this.createRadioButtons()}
             </div>
-        )
+        );
     }
 }
 

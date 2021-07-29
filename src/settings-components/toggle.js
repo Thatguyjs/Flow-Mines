@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToolTip, ToolTipBtn } from './tooltip';
+import { ToolTipBtn } from './tooltip';
 
 class ToggleButton extends React.Component {
 
@@ -40,8 +40,7 @@ class ToggleButton extends React.Component {
                 </label>
 
             </div>
-            
-        )
+        );
     }
 
 }

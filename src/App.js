@@ -6,7 +6,7 @@ import './App.css';
 import background from "./images/background_hd.png";
 
 import { Card } from './Card.js';
-import { WaterData, getAdvice, advice } from './WeatherAPIMod.js'
+import { getAdvice, advice } from './WeatherAPIMod.js'
 import Storage from './settings-components/storage.js'
 
 

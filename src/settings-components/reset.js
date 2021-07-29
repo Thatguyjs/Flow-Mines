@@ -23,7 +23,7 @@ class ResetButton extends React.Component {
                     <input type="button" value="RESET" onClick={this.handleChange}/>
                 </label>
             </div>
-        )
+        );
     }
 }
 
