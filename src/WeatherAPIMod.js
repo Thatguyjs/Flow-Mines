@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const moment = require('moment');
 
 class WaterData {
-    constructor(dayName, weather = null, temp = null, startTime = null, duration = null, explanation = null) {
+    constructor(dayName = null, weather = null, temp = null, startTime = null, duration = null, explanation = null) {
         this.dayName = dayName;
         this.weather = weather;
         this.temp = temp;
@@ -24,7 +24,8 @@ class WaterData {
         return temp + "°" + units.toUpperCase();
     }
     
-    setWeather(temp, weather) {
+    setWeather(day, temp, weather) {
+        this.dayName = day;
         this.temp = temp;
         this.weather = weather;
     }
@@ -47,20 +48,17 @@ class WaterData {
 }
 
 
-
-//see displayWeather() for more possible constructors to put here,
-//depending how we structure our program overall.
-
 //later used to store info returned by API
 const weather = {};
 var advice = {
-    0: new WaterData("monday"),
-    1: new WaterData("tuesday"),
-    2: new WaterData("wednesday"),
-    3: new WaterData("thursday"),
-    4: new WaterData("friday"),
-    5: new WaterData("saturday"),
-    6: new WaterData("sunday")
+    0: new WaterData(),
+    1: new WaterData(),
+    2: new WaterData(),
+    3: new WaterData(),
+    4: new WaterData(),
+    5: new WaterData(),
+    6: new WaterData(),
+    7: new WaterData()
 };
 // API Key
 const key = "549d95480b954727bd5f2ff0a254e8b7";
@@ -92,7 +90,7 @@ function getWeather(zip){
         });
 }
 
-getWeather("80027")
+getWeather(Storage.zipCode)
 var x = new WaterData(" ", null, null, "8:00 am")
 console.log(x.gTimeStr("24hr"))
 
@@ -113,7 +111,7 @@ function convWeather(code) {
 
 const days = [];
 function getDaysList(){
-    for(let i=0; i<7; i++)
+    for(let i=0; i<8; i++)
     {
         days[i] = {};
         days[i].day = i;
@@ -122,30 +120,49 @@ function getDaysList(){
         days[i].low = weather[i].min_temp;
         days[i].inches = weather[i].precip;
         days[i].wind = weather[i].wind_spd;
-        days[i].weather = convWeather(weather[i].weather.code)
+        days[i].weather = convWeather(weather[i].weather.code);
+        days[i].date = weather[i].datetime
     }
 }
 
 const suffRain = "It will rain enough this week that you do not need to water your lawn."
 const freezing = "The temperature will drop below freezing. You should blow out your sprinklers."
-const cooldown = "The temperature will be above 90 degrees today. You should water your lawn for 5 minutes to cool it off."
+const cooldown = "The temperature will be above "+Storage.get('tempThresh')+" degrees today. You should water your lawn for 5 minutes to cool it off."
 const leastWindy = "This day is one of the three least windy days this week, so it is a good time to water your lawn."
 
-function getAdvice(squareFt = 0, flowRt = 0.05, tmpThresh = 90, rainAmtThresh = 1,rainChanceThresh = 0){
+function getAdvice(){
+    //now, when people leave these fields blank in the settings, the math will still work/do stuff
+    var squareFt = Storage.get('squareFootage');
+    var flowRt = 20;
+    if (Storage.get('sprinklerFlow')!=null&&squareFt!=null)
+        {flowRt = (1/(Storage.get('sprinklerFlow')))*(squareFt)*(144/231);}
+    var tmpThresh = 90;
+    if (Storage.get('tempThresh')!=null)
+        {tmpThresh = Storage.get('tempThresh');}
+    var rainAmtThresh = 1;
+    if (Storage.get('minRainAmt')!=null)
+        {rainAmtThresh = Storage.get('minRainAmt');}
+    var rainChanceThresh = Storage.get('minRainChance');
+
+
     getDaysList();
 
-    for (let i = 0; i < 7; i++){
+    for (let i = 0; i < 8; i++){
         var corrDay = days[i];
-        advice[i].setWeather(corrDay.avg, corrDay.weather)
+        var dateBits = corrDay.date.split('-');
+        var date = new Date(dateBits[0], dateBits[1]-1, dateBits[2]);
+        advice[i].setWeather(date.toDateString().substring(0,3), corrDay.avg, corrDay.weather)
     }
-
+    for (let i = 0; i < 8; i++){
+        advice[i].setAdvice("n/a", 0, null)
+    }
     var totalInches = rainAmtThresh;
     var projectedPrecip = days.reduce((total, obj) => obj.inches + total, 0)
     //checks if there will be enough precipitation that the user doesn't need to water their lawn
     
     if (projectedPrecip >= rainAmtThresh)
     {
-        for(let i=0; i<7; i++)
+        for(let i=0; i<8; i++)
         {
             advice[i].setAdvice("n/a",0,suffRain)
         }
@@ -167,16 +184,10 @@ function getAdvice(squareFt = 0, flowRt = 0.05, tmpThresh = 90, rainAmtThresh = 
     });
 
     let lowestWindDays = windDays.slice(0, 3); // amount of days returned can be changed by adjusting latter term
-    
-    var minsPerDay = totalInches / flowRt; // this is where flow rate can be set
+    var totalMins = totalInches*flowRt;
+    var minsPerDay = totalMins/3; // this is where flow rate can be set
 
-    for(let d in lowestWindDays) {
-        let dayIdx = lowestWindDays[d].day;
-
-        advice[dayIdx].setAdvice("6 am", advice[dayIdx].minutes + minsPerDay, leastWindy)
-    }
-
-    for (let i = 0; i < 7; i++){
+    for (let i = 0; i < 8; i++){
         if(days[i].low<=32)
         {
             advice[i].setAdvice("n/a", 0, freezing)
@@ -186,7 +197,14 @@ function getAdvice(squareFt = 0, flowRt = 0.05, tmpThresh = 90, rainAmtThresh = 
             advice[i].setAdvice("6 am", 5, cooldown)
         }
     }
+    for(let d in lowestWindDays) {
+        let dayIdx = lowestWindDays[d].day;
 
+        advice[dayIdx].setAdvice("6 am", minsPerDay, leastWindy)
+    }
+
+    
+    console.log(advice);
     return advice;
 }
 
