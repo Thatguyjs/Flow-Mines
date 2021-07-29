@@ -7,22 +7,20 @@ class ResetButton extends React.Component {
     */
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this)
-
-		this.props.cInit(this);
+        this.handleChange = this.handleChange.bind(this);
     }
     
     
     handleChange() {
         this.props.cHandle(this);
     }
-    
+
     render() {
         return (
             <div className="ResetButton">
                 <label className="settings-label">Settings Reset
                     <br/>
-                    <input type="button" value="RESET" onChange={this.handleChange }/>
+                    <input type="button" value="RESET" onClick={this.handleChange}/>
                 </label>
             </div>
         )

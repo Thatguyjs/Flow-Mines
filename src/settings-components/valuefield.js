@@ -16,8 +16,6 @@ class ValueField extends React.Component {
 			value: this.props.value || '',
 			placeholder: this.props.placeholder
 		};
-
-		this.props.cInit(this);
     }
 
 

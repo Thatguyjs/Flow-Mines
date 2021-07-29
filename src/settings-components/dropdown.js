@@ -12,8 +12,6 @@ class Dropdown extends React.Component {
     constructor(props) {
         super(props);
         this.state = { isDisplayed: false, selected: this.props.selected };
-
-		this.props.cInit(this);
     }
 
 	select(item) {
