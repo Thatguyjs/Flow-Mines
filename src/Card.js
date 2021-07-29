@@ -1,11 +1,15 @@
 import React from 'react';
 import Storage from './settings-components/storage.js';
-
+import { ToolTip } from './settings-components/tooltip.js';
 const cardList = [];
 
 
 class Card extends React.Component {
 
+	constructor(props) {
+		super(props);
+		this.tooltip = React.createRef();
+	}
 	dayName() {
 		switch (this.props.layout) {
 			case "narrow":
@@ -49,18 +53,43 @@ class Card extends React.Component {
 		cardList.push(this);
 	}
 
+	getFontSizes(layout) {
+		const font_size = Storage.get("textSize")
+		const font_sizes = { 'Small': 0.5, 'Normal': 1, 'Large': 1.5 };
+		const fontModifier = font_sizes[font_size];
+		if (layout === "wide") {
+			return ["calc(" + fontModifier + "*24px)","calc(" + fontModifier + "*48px)"]
+		} else {
+			return ["calc(" + fontModifier + "*1.4em)","calc(" + fontModifier + "*1.4em)"]
+		}
+
+	}
+
+	onMouseOver = e => {
+        if (e.target != null) {
+            this.tooltip.current.show();    
+        }
+    }
+
+    onMouseOut = e => {
+        this.tooltip.current.hide();
+    }
+
+
 	render() {
+		const fontSizes = this.getFontSizes(this.props.layout)
 		return (
-			<div className={`card card-${this.props.layout}`} style={{background: this.getColor()}}>
-				<h2>{this.dayName()}</h2>
+			<div className={`card card-${this.props.layout}`} style={{ background: this.getColor() }} onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} >
+				<ToolTip ref={this.tooltip} info={this.props.data.explanation }/>
+				<h2 style={{ fontSize: fontSizes[0] }}>{this.dayName()}</h2>
 				<div className="card-info">
-					<div className="card-weather">
+					<div className="card-weather" style={{fontSize: fontSizes[1]} }>
 						<div><svg className = "largeIcon"><use href={`#icon-weather-${this.props.data.weather}`} /></svg></div>
 						{this.props.layout === 'wide' ? <div style={{ flexGrow: "5" }}/> : ''}
 						<div><span>{this.props.data.gTempStr(Storage.get("units"))}</span></div>
 					</div>
-					<div style={{flexGrow: "20" }}/>
-					<div className="card-schedule">
+					<div style={{ flexGrow: "20" }} />
+					<div style={{fontSize: fontSizes[0]} } className="card-schedule">
 						<div><svg className = "smallIcon"><use href="#icon-clock" /></svg></div>	
 						<div><span>{this.props.data.gTimeStr(Storage.get("timeFormat"))}</span></div>
 

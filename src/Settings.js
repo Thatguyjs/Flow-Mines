@@ -10,8 +10,8 @@ import ResetButton from './settings-components/reset.js';
 import ToggleButton from './settings-components/toggle.js';
 import ValueField from './settings-components/valuefield.js';
 
-import React from "react";
-
+import React, {useState} from "react";
+import App from "./App";
 
 // Name mapping, so components link to the correct setting
 const settings_map = {
@@ -96,7 +96,7 @@ class Settings extends React.Component {
 		delete template.type; // So the component doesn't receive it
 
 		if(type === ValueField) {
-			template.placeholder = 'Value';
+			template.placeholder = template.label;
 		}
 
 		const setting = this._loadSettingFor(type, template);
@@ -158,7 +158,7 @@ class Settings extends React.Component {
 	render() {
 		return ( <>
 			<header>
-				<Link id="nav-app" to="/">
+				<Link id="nav-app" to="/" onClick = {() => { window.location.href = "/"; }}>
 					<svg><use href="#icon-back" /></svg>
 				</Link>
 

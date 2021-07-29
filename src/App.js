@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import React, {useEffect, useState} from "react";
 import './common/common.css';
 import './App.css';
 
@@ -12,41 +12,53 @@ import Storage from './settings-components/storage.js'
 
 getAdvice();
 
-function App() {
-	const week_layout = Storage.get("displayFmt").toLowerCase(); // this will be set through settings
+class App extends React.Component{
 
-	return ( <>
-		<div id="bg-wrapper">
-			<img src={background} alt="" style={{height: "max(100vh, 100vw)", objectFit: "fill"} }/>
-			<div id="bg-overlay"></div>
-		</div>
+	constructor(props) {
+		super(props);
+		this.layout = Storage.get("displayFmt").toLowerCase();
+	}
 
-		<header>
-			<Link id="nav-settings" to="/settings">
-				<svg><use href="#icon-settings" /></svg>
-			</Link>
+	getWeekItems = list => {
+		var newList = [...list]
+		newList.shift();
+		return newList.map(this.makeItem);
+	}
 
-			<h1>Flow</h1>
-		</header>
+	makeItem = input => {
+		return <Card id={input.dayName} layout={this.layout} data={input}/>
+	}
 
-		<main>
-			<div id = "content-container">
-				<div id="today-container">
-					<Card id={advice[0].dayName} layout="wide" data={advice[0]}/>
-				</div>
-				<div className={"week-container week-container-" + week_layout}>
-					<Card id={advice[1].dayName} layout={week_layout} data={advice[1]}/>
-					<Card id={advice[2].dayName} layout={week_layout} data={advice[2]}/>
-					<Card id={advice[3].dayName} layout={week_layout} data={advice[3]}/>
-					<Card id={advice[4].dayName} layout={week_layout} data={advice[4]}/>
-					<Card id={advice[5].dayName} layout={week_layout} data={advice[5]}/>
-					<Card id={advice[6].dayName} layout={week_layout} data={advice[6]}/>
-					<Card id={advice[7].dayName} layout={week_layout} data={advice[7]}/>
-				</div>
+	render() {
+
+
+		return ( <>
+			<div id="bg-wrapper">
+				<img src={background} alt="" style={{height: "max(100vh, 100vw)", objectFit: "fill"} }/>
+				<div id="bg-overlay"></div>
 			</div>
-		</main>
-	</>);
 
+			<header>
+				<Link id="nav-settings" to="/settings">
+					<svg><use href="#icon-settings" /></svg>
+				</Link>
+
+				<h1>Flow</h1>
+			</header>
+
+			<main>
+				<div id = "content-container">
+					<div id="today-container">
+						<Card id={advice[0].dayName} layout="wide" data={advice[0]}/>
+					</div>
+					<div className={"week-container week-container-" + this.layout}>
+						{this.getWeekItems(advice)}
+					</div>
+				</div>
+			</main>
+		</>);
+	}
+	
 	// <Dropdown selected="0" options={["0", "1", "2"]} label="test" cHandle={() => { } }/>
 	// <RadioPanel panelName="test" selected="0" options={["0", "1", "2"]} cHandle={() => { } }/>
 	// <ValueField value="test" label="name" cHandle={() => { } }/>

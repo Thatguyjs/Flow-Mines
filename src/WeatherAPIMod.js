@@ -17,6 +17,9 @@ class WaterData {
 
 	// base unit is always fahrenheit
 	gTempStr(units) {
+		if (Storage.get("zipCode") === null) {
+			return "No Zip Code!"
+		}
 		var temp;
 		var unitIndic = "f";
 		if (units === "Metric") {
