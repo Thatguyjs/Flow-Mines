@@ -1,6 +1,9 @@
 import React from 'react';
 import Storage from './settings-components/storage.js';
 
+const cardList = [];
+
+
 class Card extends React.Component {
 
 	dayName() {
@@ -9,7 +12,7 @@ class Card extends React.Component {
 				return this.props.data.dayName.substring(0,2);
 		
 			default:
-				return this.props.data.dayName
+				return this.props.data.dayName;
 		}
 	}
 
@@ -41,6 +44,11 @@ class Card extends React.Component {
 		return "rgb(" + ret + ")";
 	}
 
+	// The order of this seems to be consistent, so this should be fine
+	componentDidMount() {
+		cardList.push(this);
+	}
+
 	render() {
 		return (
 			<div className={`card card-${this.props.layout}`} style={{background: this.getColor()}}>
@@ -66,5 +74,5 @@ class Card extends React.Component {
 }
 
 
-export default Card;
+export { Card, cardList };
 

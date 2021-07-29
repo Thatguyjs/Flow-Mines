@@ -45,7 +45,7 @@ const Storage = {
 
 	// Set / update a setting
 	set(name, value) {
-		if(!name in this) return; // Invalid setting name
+		if(!(name in this)) return; // Invalid setting name
 		this[name] = value;
 	},
 

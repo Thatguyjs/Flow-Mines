@@ -1,12 +1,11 @@
-'use strict'
-
 import Storage from './settings-components/storage.js'
+import { cardList } from './Card.js';
 
 const fetch = require('node-fetch');
 const moment = require('moment');
 
 class WaterData {
-    constructor(dayName = null, weather = null, temp = null, startTime = null, duration = null, explanation = null) {
+    constructor(dayName='', weather=null, temp=null, startTime=null, duration=null, explanation=null) {
         this.dayName = dayName;
         this.weather = weather;
         this.temp = temp;
@@ -70,31 +69,26 @@ const key = "549d95480b954727bd5f2ff0a254e8b7";
 //need a place to input zipcode (box or whatever) - then call getWeather(zip), with zip being the zipcode
 
 // get weather from API
-function getWeather(zip) {
-    let api = `https://api.weatherbit.io/v2.0/forecast/daily?postal_code=${zip}&units=I&key=${key}`;
-    
-    fetch(api)
-        .then(function (response) {
-            let info = response.json();
-            return info;
-            
-        })
-        //the response is a list of lists. There is presumably an easier way to do this than the following for loop, but... The loop works.
-        .then(function (info) {
-            for (let i = 0; i < 16; i++) {
-                weather[i] = info.data[i]
-            }
-            
-            //weather.iconId = data.weather.icon;
-            weather.city = info.city_name;
-            weather.country = info.country_code;
-        }).then(function () {
-            console.log(getAdvice());
-        }).catch(function () { });
+async function getWeather(zip) {
+    let api_url = `https://api.weatherbit.io/v2.0/forecast/daily?postal_code=${zip}&units=I&key=${key}`;
 
-getWeather(Storage.zipCode)
-var x = new WaterData(" ", null, null, "8:00 am")
-console.log(x.gTimeStr("24hr"))
+	const api_res = await fetch(api_url);
+
+	return new Promise((res, rej) => {
+		api_res.json().then((info) => {
+			for(let i in info.data)
+				weather[i] = info.data[i];
+
+			weather.city = info.city_name;
+			weather.country = info.country_code;
+
+			res(true);
+		}).catch((err) => {
+			res(false);
+		});
+	});
+}
+
 
 function convWeather(code) {
     if ((200 <= code && code <= 522) || (code === 900)) {
@@ -108,7 +102,6 @@ function convWeather(code) {
     } else {
         return "none"
     }
-
 }
 
 const days = [];
@@ -132,18 +125,26 @@ const freezing = "The temperature will drop below freezing. You should blow out 
 const cooldown = "The temperature will be above "+Storage.get('tempThresh')+" degrees today. You should water your lawn for 5 minutes to cool it off."
 const leastWindy = "This day is one of the three least windy days this week, so it is a good time to water your lawn."
 
-function getAdvice(){
+
+async function getAdvice() {
+	// Wait for the weather data to arrive
+	let success = await getWeather(Storage.zipCode);
+	if(!success) return false; // Probably no Zip Code specified
+
     //now, when people leave these fields blank in the settings, the math will still work/do stuff
     var squareFt = Storage.get('squareFootage');
     var flowRt = 20;
-    if (Storage.get('sprinklerFlow')!=null&&squareFt!=null)
-        {flowRt = (1/(Storage.get('sprinklerFlow')))*(squareFt)*(144/231);}
+    if (Storage.get('sprinklerFlow') !== null && squareFt !== null) {
+		flowRt = (1/(Storage.get('sprinklerFlow')))*(squareFt)*(144/231);
+	}
     var tmpThresh = 90;
-    if (Storage.get('tempThresh')!=null)
-        {tmpThresh = Storage.get('tempThresh');}
+    if (Storage.get('tempThresh') !== null) {
+		tmpThresh = Storage.get('tempThresh');
+	}
     var rainAmtThresh = 1;
-    if (Storage.get('minRainAmt')!=null)
-        {rainAmtThresh = Storage.get('minRainAmt');}
+    if (Storage.get('minRainAmt') !== null) {
+		rainAmtThresh = Storage.get('minRainAmt');
+	}
     var rainChanceThresh = Storage.get('minRainChance');
 
 
@@ -168,13 +169,15 @@ function getAdvice(){
         {
             advice[i].setAdvice("n/a",0,suffRain)
         }
-        return advice;
+
+		applyAdvice();
+        return;
     }
     //if there is only some precipitation, subtract that amount from the total desired inch
     totalInches = totalInches-projectedPrecip;
 
     // could be a lot less sloppy with memory by only taking the necessary parametres, but eh.
-    let windDays = [...days]
+    let windDays = [...days];
     days.sort(function (a, b) {
         if (a.wind < b.wind) {
            return -1;
@@ -205,10 +208,23 @@ function getAdvice(){
         advice[dayIdx].setAdvice("6 am", minsPerDay, leastWindy)
     }
 
-    
-    console.log(advice);
-    return advice;
+	applyAdvice();
 }
 
 
-export default WaterData;
+// Update cards with the weather advice
+function applyAdvice() {
+	advice[0].dayName = "Today";
+
+	for(let i in advice) {
+		advice[i].temp = Math.round(advice[i].temp);
+	}
+
+	// Although they have no state, this seems to work
+	for(let c in cardList) {
+		cardList[c].setState({});
+	}
+}
+
+
+export { WaterData, getAdvice, advice };
