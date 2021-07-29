@@ -10,7 +10,9 @@ import { getAdvice, advice } from './WeatherAPIMod.js'
 import Storage from './settings-components/storage.js'
 
 
-getAdvice();
+getAdvice().catch((err) => {
+	console.warn("Error getting advice:", err);
+});
 
 class App extends React.Component{
 
