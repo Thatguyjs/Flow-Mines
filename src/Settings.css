@@ -161,6 +161,7 @@ select{
 }
 .tooltip-spawner > button{
 	fill:none;
+	background: none;
 	border:none;
 	width:15px;
 	height:15px;
